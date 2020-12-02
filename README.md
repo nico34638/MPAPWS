@@ -59,142 +59,8 @@ Le service correspondant est bd
     * **IMPORTANT** : ajouter ce registry dans la config du deamon docker, exemple voir, la capture ci-dessous pour la config de docker sous OSX : 
     <div align="center" ><img alt="config registry docker OSX" src="ressources/osx-docker-registry-config.png" width="500" height="(500" /></div>
 
-# Mise en oeuvre
 
-## I- Initialisation du projet : du projet git modèle vers un projet git équipe - initialisation par l'étudiant propriétaire du projet git
-* Créer un nouveau projet git équipe avec le slug du projet : 2020-2021-INFO2-MPAPWS-lenomduprojet (un étudiant de l’équipe créé le projet)
-* Cloner la stack modèle depuis le git du projet modèle    
-https://forge.iut-larochelle.fr/jmalki/2020-2021-info2-mpapws-project-template.git
-``` 
-git clone https://forge.iut-larochelle.fr/jmalki/2020-2021-info2-mpapws-project-template.git
-```
-* Renommer le dossier avec le nom de votre projet : 
-```
-2020-2021-info2-mpapws-lenomduprojet  
-```
-
-* Positionner vous dans le dossier de votre projet et débrancher ce projet du dépôt git cloné   
-``` 
-git remote set-url origin URL-HTTP-GIT-VOTRE-PROJET
-```  
-* Pour vérifier cela, faire :
-```
-less .git/config
-```
-* Monter le projet modèle dans le git étudiant
-
-```
-git add .
-git commit -m 'initial commit'
-git push -u origin master
-```
-
-* Et voilà votre projet est prêt
-
-## II- Configurer votre docker compose avec le nom de votre projet symfony 
-* remplacer mpapws par le nom de votre projet dans le fichier docker-compose.yml uniquement sur les deux lignes suivantes
-```
-args: 
-        APP_DOCUMENT_ROOT: /var/www/html/mpapws/public
-```
-et 
-```
-volumes:
-      - ./mpapws:/var/www/html/mpapws:delegated  
-```
-* pousser cette mise à jour sur votre dépôt distant
-
-## III - Avant de continuer : on sait lancer et arrêter la stack docker
-**Pré-requis**
-
-* Ouvrir un terminal 
-* Se positionner dans le dossier du projet 
-* Vérifier qu’il n’y a pas de conteneurs docker démarrés
-
-Pour voir les processus docker qui tournent:
-``` 
-docker ps
-```  
-Pour arrêter les conteneurs démarrés
-``` 
-docker stop $(docker ps -a -q)
-```  
-
-Pour supprimer tous les conteneurs, pour éviter des conflits de nommage
-``` 
-docker rm $(docker ps -a -q)
-``` 
-Attention: ces deux commandes peuvent envoyer une erreur argument manquant s'il n'y a pas de conteneurs qui tournent, normal car **docker ps -a -q** ne renvoit rien     
-
-**Démarrage de la stack**
-* Construire et démarrer les conteneurs déclarés dans le docker-compose.yml du projet
-``` 
-docker-compose up --build  
-``` 
-Remarque : ne pas fermer ce terminal après le démarrage des conteneurs 
-* Dans un nouveau terminal, positionné dans le dossier du projet inspecter l’état des conteneurs démarrés
-``` 
-docker-compose ps 
-``` 
-**Arrêt de la stack**
-
-Equivalent à : arrêter et supprimer les conteneurs du projet  en cours d'exécution
-``` 
-docker-compose down
-```   
-Tester que vous savez arrêter la stack proprement
-
-## IV - initialiser le projet symfony
-
-**Pré-requis :**
-
-* Penser à relancer votre stack docker du projet 
-
-**Initialisation** 
-* Relancer votre stack docker
-* Dans un nouveau terminal, se connecter au terminal du conteneur app : 
-``` 
-docker-compose exec app bash 
-``` 
-
-ou
-
-```
-docker exec -it (nom du conteneur ou id) bash 
-```
-* Utiliser composer pour récupérer un skeleton symfony
-``` 
-composer create-project symfony/website-skeleton nomProjet
-``` 
-* Vérifier que localhost:9999 affiche la page d’accueil par défaut de symfony
-
-* Sinon relancer une mise à jour composer
-```
-composer install
-```
-* Ouvrir le projet dans phpstorm
-* Noter la presence d'un fichier .gitignore à la racine du dossier de la stack qui montre que le répertoire mysql n'est pas mis à jour sur le dépôt distant
-
-* Pousser les modifications sur votre dépôt distant
-```
-git add .
-git commit -m 'init projet mpapws symfony'
-git push
-```
-
-
-## V- Initialisation du projet :  un projet git équipe - initialisation par les autres membres de l'équipe
-
-* Inviter les membres de l'équipe en tant que développeur
-* Ils vont recevoir une invitation avec l'URL du git
-* Chacun clone le projet
-* Comme le .gitignore du projet symfony ne monte pas sur le dépôt distant des dossiers comme var ou vendor, il vous faut finaliser la récupération des dépendances symfony. A faire dans un terminal connecté au conteneur app, en vous plaçant dans le dossier de votre projet :
-```
-composer install
-```
-* Vérifier que localhost:9999 affiche la page d’accueil par défaut de symfony
-
-## VI- Mise en place de la connexion à la bd db-mpapws
+## Rappels : Connexion à la bd db-mpapws
 
 * Configuer le ".env.local" pour accéder à la base de données du projet **mpapws**
 
@@ -212,7 +78,7 @@ DATABASE_URL=mysql://mpapws:mpapws@iutlr-info2-mysql-mpapws:3306/db-mpapws
 ```
 * Attention ne pas changer mpapws par votre nom de projet ici ;-)
 
-# Accéder à la base de données à partir de PhpStorm 
+### Accéder à la base de données à partir de PhpStorm 
 
 - Etape (1) :
   <div align="center" ><img alt="config registry docker OSX" src="ressources/dbconfig01.png" width="600" height="300" /></div>
@@ -228,6 +94,5 @@ DATABASE_URL=mysql://mpapws:mpapws@iutlr-info2-mysql-mpapws:3306/db-mpapws
     - Tester la connexion 
 <div align="center" ><img alt="config registry docker OSX" src="ressources/dbconfig02.png" width="650" height="300" /></div>
 
-**Et voilà vous êtes prêts à développer votre application !**
 
 
