@@ -4,7 +4,6 @@
 **Projet MPAPWS**   
 ---
 > Remi MIGNON, Nicolas FIDEL, Louis GUILLET, Mathieu LUCAS, Mathis DEVIGNE  
-
 > Nous sommes l'équipe Z-3-1
 --- 
 
