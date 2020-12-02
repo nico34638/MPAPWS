@@ -3,7 +3,9 @@
 **2020-2021**
 
 **Projet MPAPWS**   
---- 
+---
+> Remi MIGNON, Nicolas FIDEL, Louis GUILLET, Mathieu LUCAS, Mathis DEVIGNE
+> Nous sommes l'équipe Z-3-1
 --- 
 
 
@@ -24,7 +26,7 @@ Le service correspondant est app
 
 Le service correspondant est bd
 
-## Archiecture physique 
+## Archiecture physique du projet
 
 **projet_mpapws/**  
 ├── README.md     
