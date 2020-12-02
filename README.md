@@ -1,6 +1,5 @@
-**IUT La Rochelle**   
-**Département Informatique**   
-**2020-2021**
+**Etudiants à l'IUT La Rochelle**   
+**DUT Informatique 2020-2021**
 
 **Projet MPAPWS**   
 ---
