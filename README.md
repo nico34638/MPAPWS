@@ -5,13 +5,6 @@
 **Projet MPAPWS**   
 --- 
 --- 
-# Objectif 
-
-Ce document fournit une architecture type pour votre projet MPAPWS. Cette architecture se base sur une conception basée sur des images logicielles de type docker gérées par le programme de composition des services, nommé « docker-compose ». 
-
-Nous considérons alors un projet nommé **MPAPWS**. 
-
-**Ce nom doit être remplacé par le nom de votre projet réel.** 
 
 
 # Architecture
