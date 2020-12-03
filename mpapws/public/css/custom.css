@@ -5546,10 +5546,6 @@ p.stars a:before {
 	text-indent: 0;
 	opacity: .25;
 }
-.required {
-	border-bottom: 0!important;
-	color: red;
-}
 p.stars a:hover, p.stars a:hover:before {
 	color: #faa61a;
 	opacity: 1;

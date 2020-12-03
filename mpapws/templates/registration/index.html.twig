@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+
+    <section class="wf100 p100 inner-header">
+        <div class="container">
+            <h1>Mon compte</h1>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Mon compte</a></li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="wf100 p80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="myaccount-form">
+                        <h3>Création du compte </h3>
+                        <form method="post">
+                            {{ form_start(form) }}
+                            <ul class="row">
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        {{ form_row(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom :'}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        {{ form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom :'}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email :'}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        {{ form_row(form.username, {'attr': {'class': 'form-control', 'placeholder': "Votre nom d'utilisateurs"}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        {{ form_row(form.password.first, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        {{ form_row(form.password.second, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-12">
+                                    <div class="input-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">I agree to the Terms of <a href="#">Services & Privacy Plicy</a></label>
+                                    </div>
+                                </li>
+                                <li class="col-md-12">
+                                    <button class="register">Créer votre compte</button>
+                                </li>
+                                {{ form_end(form) }}
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
