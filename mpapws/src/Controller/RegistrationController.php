@@ -29,7 +29,6 @@ class RegistrationController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
-            dd($user);
             $user->setRoles(['ROLE_USER']);
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
@@ -39,9 +38,10 @@ class RegistrationController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Votre compte à bien été enregistré.');
+            $this->redirectToRoute('app_login');
         }
 
-        return $this->render('registration/index.html.twig', [
+        return $this->render('security/register.html.twig', [
             'form' => $form->createView()
         ]);
     }
