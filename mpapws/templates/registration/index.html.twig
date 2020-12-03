@@ -27,32 +27,49 @@
                             <ul class="row">
                                 <li class="col-md-6">
                                     <div class="input-group">
-                                        {{ form_row(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom :'}}) }}
+                                        <div class="col-md-10">
+                                            {{ form_label(form.prenom) }}
+                                            {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom :'}}) }}
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="col-md-6">
                                     <div class="input-group">
-                                        {{ form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom :'}}) }}
+                                        <div class="col-md-10">
+                                            {{ form_label(form.nom) }}
+                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom :'}}) }}
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="col-md-6">
                                     <div class="input-group">
-                                        {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email :'}}) }}
+                                        <div class="col-md-10">
+                                            {{ form_label(form.email) }}
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email :'}}) }}
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="col-md-6">
                                     <div class="input-group">
-                                        {{ form_row(form.username, {'attr': {'class': 'form-control', 'placeholder': "Votre nom d'utilisateurs"}}) }}
+                                        <div class="col-md-10">
+                                            {{ form_label(form.username) }}
+                                            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': "Votre nom d'utilisateur"}}) }}
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="col-md-6">
                                     <div class="input-group">
-                                        {{ form_row(form.password.first, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+
+                                        <div class="col-md-10">
+                                            {{ form_label(form.password.first) }}
+                                            {{ form_widget(form.password.first, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="col-md-6">
-                                    <div class="input-group">
-                                        {{ form_row(form.password.second, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                    <div class="col-md-10">
+                                        {{ form_label(form.password.second) }}
+                                        {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
                                     </div>
                                 </li>
                                 <li class="col-md-12">

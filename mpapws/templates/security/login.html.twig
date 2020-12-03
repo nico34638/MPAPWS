@@ -1,35 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
 
-            {% if app.user %}
-                <div class="mb-3">
-                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+    <section class="wf100 p100 inner-header">
+        <div class="container">
+            <h1>Mon compte</h1>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Mon compte</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="wf100 p80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="myaccount-form">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Tu es maintenant connecter {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se
+                                    déconnecter</a>
+                            </div>
+                        {% endif %}
+
+                        <h3>Création du compte </h3>
+                        <form method="post">
+                            <ul class="row">
+                                <li class="col-md-12">
+                                    <div class="input-group">
+                                        <div class="col-md-8">
+                                            <label for="inputEmail" class="required">Email</label>
+                                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                                   class="form-control" required autofocus>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-12">
+                                    <div class="input-group">
+                                        <div class="col-md-8">
+                                            <label for="inputPassword" class="required">Password</label>
+                                            <input type="password" name="password" id="inputPassword" class="form-control"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </li>
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+                                <li class="col-md-12">
+                                    <button class="register">Se connecter</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
                 </div>
-            {% endif %}
 
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <label for="inputEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-            <label for="inputPassword">Password</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" required>
-
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
-
-            <button class="btn btn-lg btn-primary" type="submit">
-                Sign in
-            </button>
-        </form>
-    </div>
-</div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
