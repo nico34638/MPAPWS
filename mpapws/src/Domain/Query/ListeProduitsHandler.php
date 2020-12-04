@@ -1,11 +1,9 @@
 <?php
 
 
-namespace App\Query;
+namespace App\Domain\Query;
 
-
-
-use App\AnnuaireDeProduits;
+use App\Domain\AnnuaireDeProduits;
 
 class ListeProduitsHandler
 {

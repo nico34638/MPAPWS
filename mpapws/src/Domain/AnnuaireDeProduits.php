@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App;
+namespace App\Domain;
 
 
 interface AnnuaireDeProduits

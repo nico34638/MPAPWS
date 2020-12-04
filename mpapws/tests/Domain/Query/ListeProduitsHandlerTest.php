@@ -1,20 +1,19 @@
 <?php
 
 
-namespace App;
+namespace App\Tests\Domain\Query;
 
-
-use App\AnnuaireDeProduits;
-use App\Query\ListeProduitsHandler;
-use App\Query\ListeProduitsQuery;
+use App\Domain\AnnuaireDeProduits;
+use App\Domain\Query\ListeProduitsHandler;
+use App\Domain\Query\ListeProduitsQuery;
 use PHPUnit\Framework\TestCase;
 
 class ListeProduitsHandlerTest extends TestCase
 {
-    public function test_obtenir_la_liste_de_cinemas_interroge_l_annuaire(){
+    public function test_obtenir_la_liste_de_produits_interroge_l_annuaire(){
 
         // Arrange
-        $requete = new ListeProduitsQuery();
+        $requete = $this->createMock(ListeProduitsQuery::class);
         $annuaire = $this->createMock(AnnuaireDeProduits::class);
         $handler = new ListeProduitsHandler($annuaire);
 
@@ -23,5 +22,6 @@ class ListeProduitsHandlerTest extends TestCase
 
         // Act
         $listeDeProduits = $handler->handle($requete);
+        $this->assertIsIterable($listeDeProduits);
     }
 }

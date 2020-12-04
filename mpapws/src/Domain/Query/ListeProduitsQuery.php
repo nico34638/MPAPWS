@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Query;
+namespace App\Domain\Query;
 
 
 class ListeProduitsQuery

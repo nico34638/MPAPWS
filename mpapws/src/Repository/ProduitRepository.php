@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Domain\AnnuaireDeProduits;
 use App\Entity\Produit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -12,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Produit[]    findAll()
  * @method Produit[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProduitRepository extends ServiceEntityRepository
+class ProduitRepository extends ServiceEntityRepository implements AnnuaireDeProduits
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -47,4 +48,8 @@ class ProduitRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function tousLesProduits(): iterable
+    {
+        return $this->findAll();
+    }
 }
