@@ -30,7 +30,7 @@
                             </div>
                         {% endif %}
 
-                        <h3>Création du compte </h3>
+                        <h3>Connexion </h3>
                         <form method="post">
                             <ul class="row">
                                 <li class="col-md-12">
@@ -38,15 +38,16 @@
                                         <div class="col-md-8">
                                             <label for="inputEmail" class="required">Email</label>
                                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
-                                                   class="form-control" required autofocus>
+                                                   class="form-control" required autofocus placeholder="Mail">
                                         </div>
                                     </div>
                                 </li>
                                 <li class="col-md-12">
                                     <div class="input-group">
                                         <div class="col-md-8">
-                                            <label for="inputPassword" class="required">Password</label>
-                                            <input type="password" name="password" id="inputPassword" class="form-control"
+                                            <label for="inputPassword" class="required">Mot de passe</label>
+                                            <input type="password" name="password" id="inputPassword"
+                                                   class="form-control" placeholder="Mot de passe"
                                                    required>
                                         </div>
                                     </div>
