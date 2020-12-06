@@ -25,27 +25,22 @@ class RegisterTypeTest extends TypeTestCase
             'nom' => 'test',
             'username' => 'test',
             'email' => 'test@gmail.com',
-            'password' => 'test',
-            'password' => 'test',
-            'roles' => [],
-            'activation_token' => null,
-            'reset_token' => null
+            'password.first' => 'test',
+            'password.second' => 'test'
         ];
 
         $expected = new User();
-        $expected->setPassword("test");
         $expected->setPrenom('test');
         $expected->setNom('test');
-        $expected->setEmail('test@gmail.com');
         $expected->setUsername('test');
-        $expected->setRoles([]);
+        $expected->setEmail('test@gmail.com');
 
         $contentForm = new User();
 
         $form = $this->factory->create(RegisterType::class, $contentForm);
         $form->submit($formData);
         $this->assertTrue($form->isSynchronized());
-
+        $this->assertEquals($expected, $contentForm);
 
     }
 
