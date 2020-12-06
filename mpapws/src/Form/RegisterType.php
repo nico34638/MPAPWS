@@ -39,6 +39,10 @@ class RegisterType extends AbstractType
                 'mapped' => false,
                 'label' => "Je suis un producteur"
             ])
+            ->add('droitUtilisation', CheckboxType::class, [
+                'mapped' => false,
+                'label' => "Accepter les droits d'utilisation du site"
+            ])
         ;
     }
 

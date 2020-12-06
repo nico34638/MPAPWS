@@ -29,21 +29,25 @@ class RegistrationController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $user->setRoles(['ROLE_USER']);
-            if($form->get('producteur')->getData() == "true")
+            if($form->get('droitUtilisation')->getData() == "true")
             {
-                $user->addRoles('ROLE_PRODUCTEUR');
+                $user->setRoles(['ROLE_USER']);
+                if($form->get('producteur')->getData() == "true")
+                {
+                    $user->addRoles('ROLE_PRODUCTEUR');
+                }
+
+                $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($password);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                $this->addFlash('success', 'Votre compte à bien été enregistré.');
+                return $this->redirectToRoute('app_login');
             }
 
-            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($password);
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            $this->addFlash('success', 'Votre compte à bien été enregistré.');
-            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', [

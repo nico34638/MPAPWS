@@ -76,19 +76,16 @@
                                 <li class="col-md-12">
                                     <div class="input-group form-check">
                                         <div class="col-md-10">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">I agree to the Terms of
-                                                <a
-                                                        href="#">Services & Privacy Plicy</a></label>
+                                            {{ form_widget(form.producteur, {'attr': {'class': 'form-check-input'}}) }}
+                                            {{ form_label(form.producteur) }}
                                         </div>
                                     </div>
                                 </li>
-
                                 <li class="col-md-12">
                                     <div class="input-group form-check">
                                         <div class="col-md-10">
-                                            {{ form_widget(form.producteur, {'attr': {'class': 'form-check-input'}}) }}
-                                            {{ form_label(form.producteur) }}
+                                            {{ form_widget(form.droitUtilisation, {'attr': {'class': 'form-check-input'}}) }}
+                                            {{ form_label(form.droitUtilisation) }}
                                         </div>
                                     </div>
                                 </li>
