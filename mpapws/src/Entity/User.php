@@ -127,6 +127,15 @@ class User implements UserInterface
     }
 
     /**
+     * Add a role
+     * @param string $role
+     */
+    public function addRoles(string $role)
+    {
+        array_push($this->roles, $role);
+    }
+
+    /**
      * @see UserInterface
      */
     public function getRoles(): array
