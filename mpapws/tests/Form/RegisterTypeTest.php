@@ -8,9 +8,16 @@ use App\Entity\User;
 use App\Form\RegisterType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * Class RegisterTypeTest
+ * @package App\Tests\Form
+ */
 class RegisterTypeTest extends TypeTestCase
 {
 
+    /**
+     * Test form register
+     */
     public function test_register_type()
     {
         $formData = [

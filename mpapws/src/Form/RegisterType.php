@@ -37,7 +37,8 @@ class RegisterType extends AbstractType
             ])
             ->add('producteur', CheckboxType::class, [
                 'mapped' => false,
-                'label' => "Je suis un producteur"
+                'label' => "Je suis un producteur",
+                'required' => false,
             ])
             ->add('droitUtilisation', CheckboxType::class, [
                 'mapped' => false,
