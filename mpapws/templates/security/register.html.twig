@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+
+    <section class="wf100 p100 inner-header">
+        <div class="container">
+            <h1>Mon compte</h1>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Mon compte</a></li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="wf100 p80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="myaccount-form">
+                        <h3>Création du compte </h3>
+                        <form method="post">
+                            {{ form_start(form) }}
+                            {{ form_errors(form) }}
+
+                            <ul class="row">
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.prenom) }}
+                                            {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom'}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.nom) }}
+                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.email) }}
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email'}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.username) }}
+                                            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': "Votre nom d'utilisateur"}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.password.first) }}
+                                            {{ form_widget(form.password.first, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="col-md-10">
+                                        {{ form_label(form.password.second) }}
+                                        {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-12">
+                                    <div class="input-group form-check">
+                                        <div class="col-md-10">
+                                            {{ form_widget(form.producteur, {'attr': {'class': 'form-check-input'}}) }}
+                                            {{ form_label(form.producteur) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-12">
+                                    <div class="input-group form-check">
+                                        <div class="col-md-10">
+                                            {{ form_widget(form.droitUtilisation, {'attr': {'class': 'form-check-input'}}) }}
+                                            {{ form_label(form.droitUtilisation) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-12">
+                                    <button class="register">Créer votre compte</button>
+                                </li>
+                                {{ form_end(form) }}
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
