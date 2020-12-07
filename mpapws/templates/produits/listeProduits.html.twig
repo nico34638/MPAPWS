@@ -12,10 +12,10 @@
         <h1>Voici la liste des produits disponible : ({{ controller_name }})! ✅</h1>
         <ul>
             {% for pdt in produits %}
-                <img src="{{ pdt.sourceImage }}">
+                <img src="{{ pdt.sourceImage }}"height="400" width="400" alt="Image du produit : {{ pdt.nom }}">
                 <div class="container">
                     <div class="row">
-                        <div class="col">{{ pdt.nom }} : {{ pdt.prix }} <br>{{ pdt.description }} </div>
+                        <div class="col"> - {{ pdt.nom }} : {{ pdt.prix }} euro(s)<br>{{ pdt.description }} </div>
                     </div>
                 </div>
             {% endfor %}
