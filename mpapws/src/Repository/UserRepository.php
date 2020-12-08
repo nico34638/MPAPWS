@@ -42,14 +42,15 @@ class UserRepository extends ServiceEntityRepository implements AnnuaireProducte
      */
     public function tousLesProducteurs(): iterable
     {
-        return $this->createQueryBuilder('u')
+        $res =  $this->createQueryBuilder('u')
+            ->select('u.prenom, u.nom, u.email, u.roles')
             ->andWhere('u.roles LIKE :role')
-            ->setParameter('role', 'ROLE_PRODUCTEUR')
+            ->setParameter('role', '%ROLE_PRODUCTEUR%')
             ->getQuery()
             ->getResult()
             ;
 
-
+        return $res;
     }
 
 }
