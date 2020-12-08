@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Domain\AnnuaireProducteur;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -12,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository
+class UserRepository extends ServiceEntityRepository implements AnnuaireProducteur
 {
     /**
      * UserRepository constructor.
@@ -34,6 +35,21 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('e', $email)
             ->getQuery()
             ->getFirstResult();
+    }
+
+    /**
+     * @return iterable
+     */
+    public function tousLesProducteurs(): iterable
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', 'ROLE_PRODUCTEUR')
+            ->getQuery()
+            ->getResult()
+            ;
+
+
     }
 
 }

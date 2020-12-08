@@ -27,14 +27,16 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegisterType::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
+        if ($form->isSubmitted() && $form->isValid())
         {
-            if($form->get('droitUtilisation')->getData() == "true")
+            if ($form->get('droitUtilisation')->getData() == "true")
             {
-                $user->setRoles(['ROLE_USER']);
-                if($form->get('producteur')->getData() == "true")
+                if ($form->get('producteur')->getData() == "true")
                 {
                     $user->addRoles('ROLE_PRODUCTEUR');
+                } else
+                {
+                    $user->setRoles(['ROLE_USER']);
                 }
 
                 $password = $passwordEncoder->encodePassword($user, $user->getPassword());
