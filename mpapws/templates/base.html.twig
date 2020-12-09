@@ -18,8 +18,10 @@
 <body>
 
 <header>
-	<nav class="navbar navbar-expand-lg navbar-light bg-green">
-		<img src="images/Farmeetic/farmeeticT.png">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-green">
+		<a href="/">
+			<img src="images/Farmeetic/farmeeticT.png">
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 		        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -28,14 +30,14 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link text-white font-weight-bold" href="#">Acceuil<span
+					<a class="nav-link text-white font-weight-bold" href="/">Acceuil<span
 								class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-white font-weight-bold" href="#">Produits</a>
+					<a class="nav-link text-white font-weight-bold" href="/produits">Produits</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-white font-weight-bold" href="#">Producteurs</a>
+					<a class="nav-link text-white font-weight-bold" href="/producteurs">Producteurs</a>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
@@ -43,7 +45,7 @@
 				       aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
 			</form>
-			<a class="nav-link text-white font-weight-bold" href="#">Connexion | Inscription</a>
+			<a class="nav-link text-white font-weight-bold" href="/inscription">Connexion | Inscription</a>
 		</div>
 	</nav>
 </header>
@@ -62,9 +64,9 @@
 			<ul>
 				<li><h6>Le site</h6></li>
 				<li><a href="/">Accueil</a></li>
-				<li><a href="#">Produits</li>
-				<li><a href="#">Producteur</a></li>
-				<li><a href="#">Connexion & Inscription</a></li>
+				<li><a href="/produits">Produits</li>
+				<li><a href="/producteurs">Producteur</a></li>
+				<li><a href="/inscription">Connexion & Inscription</a></li>
 			</ul>
 		</div>
 		<div>
