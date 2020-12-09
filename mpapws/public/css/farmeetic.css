@@ -1,0 +1,96 @@
+
+header img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+    background-color: #33691e;
+}
+
+.bg-green {
+    background-color: #1b5e20!important;
+}
+
+.btn-primary {
+    background-color: #33691e!important;
+    border: #1b5e20!important;
+}
+.carousel .carousel-item h1 {
+    position: absolute;
+    bottom: 42%;
+    left: 15%;
+    background-color: transparent;
+    font-weight: bold;
+}
+.farm-card .card-content {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 20%;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.img-border {
+    border-radius: 8px;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 500px) {
+    .info{
+        flex-direction: column;
+    }
+}
+
+.product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 50px;
+}
+
+.card {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.plus-de-produits{
+    margin-top: 30px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #1b5e20;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+footer li{
+    list-style-type: none;
+    color: white;
+}
+
+footer li h6 {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+footer li a {
+    color: white;
+}
+footer li a:hover {
+    color: white;
+}
