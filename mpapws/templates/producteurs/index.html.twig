@@ -1,18 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProducteursController!{% endblock %}
+{% block title %}Liste des producteurs!{% endblock %}
 
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .ntm{ background-color: #1b5e20 !important; border-color: #1b5e20 !important; }
 </style>
 
 <div class="example-wrapper">
-    This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/mpapws/src/Controller/ProducteurController.php'|file_link(0) }}">src/Controller/ProducteursController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/mpapws/templates/producteurs/index.html.twig'|file_link(0) }}">templates/producteurs/index.html.twig</a></code></li>
+        {% for producteur in producteurs %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://via.placeholder.com/150" class="card-img" alt="ntm">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producteur.prenom }}{{ producteur.nom }}</h5>
+                            <p class="card-text">Bonjour je suis le colonel Moutarde et j'ai un mirco-pénis</p>
+                            <p class="card-text"><small class="text-muted">Contact : {{ producteur.email }}</small></p>
+                            <p class="card-text"><a href="#" class="ntm btn btn-primary">En savoir plus</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <li><em>no user found</em></li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

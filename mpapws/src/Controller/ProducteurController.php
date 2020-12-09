@@ -18,8 +18,6 @@ class ProducteurController extends AbstractController
         $query = new ListeProducteursQuery();
         $producteurs = $handler->handle($query);
 
-        dd($producteurs);
-
         return $this->render('producteurs/index.html.twig', [
             'producteurs' => $producteurs
         ]);
