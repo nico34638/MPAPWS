@@ -7,12 +7,12 @@ header img {
 }
 
 .bg-green {
-    background-color: #1b5e20!important;
+    background-color: #1b5e20;
 }
 
 .btn-primary {
-    background-color: #33691e!important;
-    border: #1b5e20!important;
+    background-color: #33691e;
+    border: #1b5e20;
 }
 .carousel .carousel-item h1 {
     position: absolute;
@@ -70,7 +70,7 @@ header img {
 }
 
 .footer {
-    background-color: #1b5e20!important;;
+    background-color: #1b5e20;
     padding-top: 25px;
     padding-bottom: 25px;
 }
