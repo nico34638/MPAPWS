@@ -4,7 +4,7 @@
 namespace App\Domain;
 
 
-interface AnnuaireDeProduits
+interface CatalogueOfProducts
 {
     public function tousLesProduits():iterable;
 }

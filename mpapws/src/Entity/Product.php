@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
  */
-class Produit
+class Product
 {
     /**
      * @ORM\Id
@@ -20,7 +20,7 @@ class Produit
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $nom;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -35,21 +35,21 @@ class Produit
     /**
      * @ORM\Column(type="integer")
      */
-    private $prix;
+    private $price;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->nom;
+        return $this->name;
     }
 
-    public function setNom(string $nom): self
+    public function setName(string $name): self
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
@@ -78,14 +78,14 @@ class Produit
         return $this;
     }
 
-    public function getPrix(): ?int
+    public function getPrice(): ?int
     {
-        return $this->prix;
+        return $this->price;
     }
 
-    public function setPrix(int $prix): self
+    public function setPrice(int $price): self
     {
-        $this->prix = $prix;
+        $this->price = $price;
 
         return $this;
     }

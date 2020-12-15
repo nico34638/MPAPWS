@@ -2,25 +2,25 @@
 
 namespace App\Controller;
 
-use App\Domain\Query\ListeProduitsHandler;
-use App\Domain\Query\ListeProduitsQuery;
+use App\Domain\Query\ListeProductsHandler;
+use App\Domain\Query\ListeProductsQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ProduitsController extends AbstractController
+class ProductsController extends AbstractController
 {
     /**
      * @Route("/produits", name="produits")
-     * @param ListeProduitsHandler $handler
+     * @param ListeProductsHandler $handler
      * @return Response
      */
-    public function listePrd(ListeProduitsHandler $handler): Response
+    public function listePrd(ListeProductsHandler $handler): Response
     {
-        $query= new ListeProduitsQuery();
+        $query= new ListeProductsQuery();
         $produits= $handler->handle($query);
         return $this->render('produits/listeProduits.html.twig', [
-            'controller_name' => 'ProduitsController',
+            'controller_name' => 'ProductsController',
             'produits'=> $produits,
         ]);
     }
