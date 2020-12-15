@@ -21,8 +21,8 @@ class RegisterTypeTest extends TypeTestCase
     public function test_register_type()
     {
         $formData = [
-            'prenom' => 'test',
-            'nom' => 'test',
+            'firstName' => 'test',
+            'lastName' => 'test',
             'username' => 'test',
             'email' => 'test@gmail.com',
             'password.first' => 'test',
@@ -30,8 +30,8 @@ class RegisterTypeTest extends TypeTestCase
         ];
 
         $expected = new User();
-        $expected->setPrenom('test');
-        $expected->setNom('test');
+        $expected->setFirstName('test');
+        $expected->setLastName('test');
         $expected->setUsername('test');
         $expected->setEmail('test@gmail.com');
 

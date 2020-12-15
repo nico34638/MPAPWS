@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
-use App\Domain\Query\ListeProducteursHandler;
-use App\Domain\Query\ListeProducteursQuery;
+use App\Domain\Query\ListProducersHandler;
+use App\Domain\Query\ListProducerQuery;
 use App\Domain\Query\ListeProduitsHandler;
 use App\Domain\Query\ListeProduitsQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,12 +23,12 @@ class IndexController extends AbstractController
      * @param ListeProduitsHandler $handler
      * @return Response
      */
-    public function index(ListeProduitsHandler $productHandler,ListeProducteursHandler $producerHandler): Response
+    public function index(ListeProduitsHandler $productHandler, ListProducersHandler $producerHandler): Response
     {
         $productQuery= new ListeProduitsQuery();
         $allProducts= $productHandler->handle($productQuery);
 
-        $producerQuery= new ListeProducteursQuery();
+        $producerQuery= new ListProducerQuery();
         $allProducers= $producerHandler->handle($producerQuery);
 
 
