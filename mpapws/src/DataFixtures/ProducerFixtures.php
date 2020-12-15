@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Faker;
 
-class ProducteurFixtures extends Fixture
+class ProducerFixtures extends Fixture
 {
 
     private $encoder;
@@ -28,8 +28,8 @@ class ProducteurFixtures extends Fixture
         for ($i = 0; $i < 20; $i++)
         {
             $user = new User();
-            $user->setPrenom($faker->firstName);
-            $user->setNom($faker->lastName);
+            $user->setFirstName($faker->firstName);
+            $user->setLastName($faker->lastName);
             $user->setUsername($faker->name);
             $user->setEmail($faker->email);
             $user->setPassword($this->encoder->encodePassword($user, 'demo'));

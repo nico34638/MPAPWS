@@ -20,15 +20,17 @@ class User implements UserInterface
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenom;
+
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -51,44 +53,44 @@ class User implements UserInterface
      */
     private $roles = [];
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $activation_token;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $reset_token;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPrenom(): ?string
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
     {
-        return $this->prenom;
+        return $this->firstName;
     }
 
-    public function setPrenom(string $prenom): self
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
     {
-        $this->prenom = $prenom;
-
-        return $this;
+        $this->firstName = $firstName;
     }
 
-    public function getNom(): ?string
+    /**
+     * @return mixed
+     */
+    public function getLastName()
     {
-        return $this->nom;
+        return $this->lastName;
     }
 
-    public function setNom(string $nom): self
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
     {
-        $this->nom = $nom;
-
-        return $this;
+        $this->lastName = $lastName;
     }
+
 
     public function getUsername(): ?string
     {
@@ -173,42 +175,6 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getActivationToken(): ?string
-    {
-        return $this->activation_token;
-    }
 
-    /**
-     * @param string|null $activation_token
-     * @return $this
-     */
-    public function setActivationToken(?string $activation_token): self
-    {
-        $this->activation_token = $activation_token;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getResetToken(): ?string
-    {
-        return $this->reset_token;
-    }
-
-    /**
-     * @param string|null $reset_token
-     * @return $this
-     */
-    public function setResetToken(?string $reset_token): self
-    {
-        $this->reset_token = $reset_token;
-
-        return $this;
-    }
 }
 

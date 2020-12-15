@@ -6,14 +6,20 @@ namespace App\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Class IndexControllrTest
+ * Class IndexControllerTest
  * @package App\Tests\Controller
  */
-class IndexControllrTest extends WebTestCase
+class IndexControllerTest extends WebTestCase
 {
 
+    /**
+     * @var \Symfony\Bundle\FrameworkBundle\KernelBrowser
+     */
     private $client;
 
+    /**
+     * Fonction qui s'écute avant tous les tests
+     */
     public function setUp(): void
     {
         $this->client = static::createClient();

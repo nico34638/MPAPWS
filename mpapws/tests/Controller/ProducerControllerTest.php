@@ -7,10 +7,10 @@ namespace App\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Class ProducteurControllerTest
+ * Class ProducerControllerTest
  * @package App\Tests\Controller
  */
-class ProducteurControllerTest extends WebTestCase
+class ProducerControllerTest extends WebTestCase
 {
 
     /**
