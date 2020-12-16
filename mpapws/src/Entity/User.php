@@ -20,8 +20,6 @@ class User implements UserInterface
      */
     private $id;
 
-
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -41,7 +39,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
-
 
     /**
      * @ORM\Column(type="string")
@@ -90,7 +87,6 @@ class User implements UserInterface
     {
         $this->lastName = $lastName;
     }
-
 
     public function getUsername(): ?string
     {

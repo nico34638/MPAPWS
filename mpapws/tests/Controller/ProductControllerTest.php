@@ -3,16 +3,16 @@
 
 namespace App\Tests\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Class IndexControllerTest
+ * Class ProductControllerTest
  * @package App\Tests\Controller
  */
-class IndexControllerTest extends WebTestCase
+class ProductControllerTest extends WebTestCase
 {
-
     /**
      * @var KernelBrowser
      */
@@ -27,11 +27,12 @@ class IndexControllerTest extends WebTestCase
     }
 
     /**
-     * Test page index
+     * Test for the displaying of the list of products
      */
-    public function test_index_page()
+    public function test_display_list_products()
     {
-        $this->client->request('GET', '/');
-        $this->assertEquals(200,  $this->client->getResponse()->getStatusCode());
+        $this->client->request('GET', '/produits');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 }
+

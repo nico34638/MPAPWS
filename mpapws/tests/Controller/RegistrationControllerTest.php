@@ -4,6 +4,7 @@
 namespace App\Tests\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -14,12 +15,24 @@ class RegistrationControllerTest extends WebTestCase
 {
 
     /**
-     * Test page register
+     * @var KernelBrowser
      */
-    public function test_page_register()
+    private $client;
+
+    /**
+     * Method that runs before all tests
+     */
+    public function setUp(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/register');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->client = static::createClient();
+    }
+
+    /**
+     * Test register page
+     */
+    public function test_register_page()
+    {
+        $this->client->request('GET', '/register');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 }

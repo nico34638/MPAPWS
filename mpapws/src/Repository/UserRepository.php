@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Domain\CatalogueOfProducer;
+use App\Domain\CatalogOfProducers;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository implements CatalogueOfProducer
+class UserRepository extends ServiceEntityRepository implements CatalogOfProducers
 {
     /**
      * UserRepository constructor.
@@ -42,14 +42,12 @@ class UserRepository extends ServiceEntityRepository implements CatalogueOfProdu
      */
     public function allProducers(): iterable
     {
-        $res =  $this->createQueryBuilder('u')
+        return $this->createQueryBuilder('u')
             ->select('u.firstName, u.lastName, u.email, u.roles')
             ->andWhere('u.roles LIKE :role')
-            ->setParameter('role', '%ROLE_PRODUCTEUR%')
+            ->setParameter('role', '%ROLE_PRODUCER%')
             ->getQuery()
             ->getResult()
         ;
-
-        return $res;
     }
 }

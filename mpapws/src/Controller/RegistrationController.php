@@ -33,7 +33,7 @@ class RegistrationController extends AbstractController
             {
                 if ($form->get('producteur')->getData() == "true")
                 {
-                    $user->addRoles('ROLE_PRODUCTEUR');
+                    $user->addRoles('ROLE_PRODUCER');
                 } else
                 {
                     $user->setRoles(['ROLE_USER']);

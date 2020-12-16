@@ -4,7 +4,7 @@
 namespace App\Domain\Query;
 
 
-class ListProducerQuery
+class ListProductsQuery
 {
 
 }

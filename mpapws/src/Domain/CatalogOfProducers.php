@@ -4,10 +4,10 @@
 namespace App\Domain;
 
 /**
- * Interface CatalogueOfProducer
+ * Interface CatalogOfProducers
  * @package App\Domain
  */
-interface CatalogueOfProducer
+interface CatalogOfProducers
 {
     /**
      * @return iterable

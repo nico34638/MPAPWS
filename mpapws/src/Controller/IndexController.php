@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Produit;
+use App\Entity\Product;
 use App\Domain\Query\ListProducersHandler;
-use App\Domain\Query\ListProducerQuery;
-use App\Domain\Query\ListeProduitsHandler;
-use App\Domain\Query\ListeProduitsQuery;
+use App\Domain\Query\ListProducersQuery;
+use App\Domain\Query\ListProductsHandler;
+use App\Domain\Query\ListProductsQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,17 +20,17 @@ class IndexController extends AbstractController
 {
     /**
      * @Route("/", name="home")
-     * @param ListeProduitsHandler $handler
+     * @param ListProductsHandler $productHandler
+     * @param ListProducersHandler $producerHandler
      * @return Response
      */
-    public function index(ListeProduitsHandler $productHandler, ListProducersHandler $producerHandler): Response
+    public function index(ListProductsHandler $productHandler, ListProducersHandler $producerHandler): Response
     {
-        $productQuery= new ListeProduitsQuery();
+        $productQuery= new ListProductsQuery();
         $allProducts= $productHandler->handle($productQuery);
 
-        $producerQuery= new ListProducerQuery();
+        $producerQuery= new ListProducersQuery();
         $allProducers= $producerHandler->handle($producerQuery);
-
 
         $nbProducts = count($allProducts);
         $nbProducer = count($allProducers);
