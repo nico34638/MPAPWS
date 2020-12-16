@@ -4,23 +4,23 @@
 namespace App\Tests\Domain\Query;
 
 
-use App\Domain\CatalogueOfProducer;
+use App\Domain\CatalogOfProducers;
 use App\Domain\Query\ListProducersHandler;
-use App\Domain\Query\ListProducerQuery;
+use App\Domain\Query\ListProducersQuery;
 use PHPUnit\Framework\TestCase;
 
 class ListProducersHandlerTest extends TestCase
 {
 
-    public function test_obtenir_la_liste_des_producteurs()
+    public function test_obtain_the_producer_list()
     {
-        $query = new ListProducerQuery();
-        $catalogueOfProducer = $this->createMock(CatalogueOfProducer::class);
+        $query = $this->createMock(ListProducersQuery::class);
+        $catalogueOfProducer = $this->createMock(CatalogOfProducers::class);
+        $handler = new ListProducersHandler($catalogueOfProducer);
+
         $catalogueOfProducer->expects($this->once())->method('allProducers');
 
-        $handler = new ListProducersHandler($catalogueOfProducer);
-        $resultat = $handler->handle($query);
-        $this->assertIsIterable($resultat);
+        $result = $handler->handle($query);
+        $this->assertIsIterable($result);
     }
-
 }

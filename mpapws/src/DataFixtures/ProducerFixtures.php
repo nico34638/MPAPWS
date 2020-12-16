@@ -38,7 +38,7 @@ class ProducerFixtures extends Fixture
                 $user->setRoles(['ROLE_USER']);
             }
             else{
-                $user->setRoles(['ROLE_PRODUCTEUR']);
+                $user->setRoles(['ROLE_PRODUCER']);
             }
             $manager->persist($user);
         }

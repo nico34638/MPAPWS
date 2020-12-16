@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Domain\CatalogueOfProducts;
+use App\Domain\CatalogOfProducts;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Product[]    findAll()
  * @method Product[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProduitRepository extends ServiceEntityRepository implements CatalogueOfProducts
+class ProductRepository extends ServiceEntityRepository implements CatalogOfProducts
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -48,7 +48,8 @@ class ProduitRepository extends ServiceEntityRepository implements CatalogueOfPr
         ;
     }
     */
-    public function tousLesProduits(): iterable
+
+    public function allProducts(): iterable
     {
         return $this->findAll();
     }

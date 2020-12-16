@@ -4,20 +4,20 @@
 namespace App\Domain\Query;
 
 
-use App\Domain\CatalogueOfProducer;
+use App\Domain\CatalogOfProducers;
 
 class ListProducersHandler
 {
 
-    private $catalogueOfProducter;
+    private $catalog;
 
-    public function __construct(CatalogueOfProducer $catalogueOfProducter)
+    public function __construct(CatalogOfProducers $aCatalogOfProducer)
     {
-        $this->catalogueOfProducter = $catalogueOfProducter;
+        $this->catalog = $aCatalogOfProducer;
     }
 
-    public function handle(ListProducerQuery $query): iterable
+    public function handle(ListProducersQuery $query): iterable
     {
-        return $this->catalogueOfProducter->allProducers();
+        return $this->catalog->allProducers();
     }
 }

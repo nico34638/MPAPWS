@@ -3,6 +3,7 @@
 
 namespace App\Tests\Controller;
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -13,12 +14,12 @@ class IndexControllerTest extends WebTestCase
 {
 
     /**
-     * @var \Symfony\Bundle\FrameworkBundle\KernelBrowser
+     * @var KernelBrowser
      */
     private $client;
 
     /**
-     * Fonction qui s'écute avant tous les tests
+     * Method that runs before all tests
      */
     public function setUp(): void
     {
@@ -28,7 +29,7 @@ class IndexControllerTest extends WebTestCase
     /**
      * Test page index
      */
-    public function test_page_index()
+    public function test_index_page()
     {
         $this->client->request('GET', '/');
         $this->assertEquals(200,  $this->client->getResponse()->getStatusCode());

@@ -4,6 +4,7 @@
 namespace App\Tests\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -14,13 +15,25 @@ class ProducerControllerTest extends WebTestCase
 {
 
     /**
-     * Test afficher la page lister les producteurs
+     * @var KernelBrowser
      */
-    public function test_afficher_liste_producteurs()
+    private $client;
+
+    /**
+     * Method that runs before all tests
+     */
+    public function setUp(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/producteurs');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->client = static::createClient();
+    }
+
+    /**
+     * Test for the displaying of the list of producers
+     */
+    public function test_display_list_producers()
+    {
+        $this->client->request('GET', '/producers');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
 }

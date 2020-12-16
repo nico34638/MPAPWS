@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Farmeetic - Accuil{% endblock %}
+{% block title %}Farmeetic - Accueuil{% endblock %}
 
 {% block body %}
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -52,8 +52,8 @@
 			<div class="card" style="width: 18rem;">
 				<img src="{{ p.sourceImage }}" class="card-img-top">
 				<div class="card-body">
-					<h5 class="card-title">{{ p.nom }}</h5>
-					<p class="card-text">{{ p.prix }}€ le Kg</p>
+					<h5 class="card-title">{{ p.name }}</h5>
+					<p class="card-text">{{ p.price }}€ le Kg</p>
 					<p class="card-text">{{ p.description }}</p>
 					<a href="#" class="btn btn-primary">En savoir plus</a>
 				</div>
