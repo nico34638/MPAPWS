@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProducerController extends AbstractController
 {
     /**
-     * @Route("/producers", name="producers")
+     * @Route("/producteurs", name="producers")
      * @param ListProducersHandler $handler
      * @return Response
      */
@@ -20,7 +20,7 @@ class ProducerController extends AbstractController
         $query = new ListProducersQuery();
         $producers = $handler->handle($query);
 
-        return $this->render('listProducers.html.twig', [
+        return $this->render('producers/listProducers.html.twig', [
             'producers' => $producers
         ]);
     }

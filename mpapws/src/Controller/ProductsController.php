@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductsController extends AbstractController
 {
     /**
-     * @Route("/products", name="products")
+     * @Route("/produits", name="products")
      * @param ListProductsHandler $handler
      * @return Response
      */

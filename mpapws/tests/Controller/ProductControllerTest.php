@@ -8,12 +8,11 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Class ProducerControllerTest
+ * Class ProductControllerTest
  * @package App\Tests\Controller
  */
-class ProducerControllerTest extends WebTestCase
+class ProductControllerTest extends WebTestCase
 {
-
     /**
      * @var KernelBrowser
      */
@@ -28,12 +27,12 @@ class ProducerControllerTest extends WebTestCase
     }
 
     /**
-     * Test for the displaying of the list of producers
+     * Test for the displaying of the list of products
      */
-    public function test_display_list_producers()
+    public function test_display_list_products()
     {
-        $this->client->request('GET', '/producteurs');
+        $this->client->request('GET', '/produits');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
-
 }
+
