@@ -35,6 +35,7 @@ class RegisterType extends AbstractType
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe']
             ])
+            ->add('address', TextType::class, ['label' => 'Adresse'])
             ->add('producteur', CheckboxType::class, [
                 'mapped' => false,
                 'label' => "Je suis un producteur",
