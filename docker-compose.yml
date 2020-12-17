@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     build:
-      args: 
+      args:
         APP_DOCUMENT_ROOT: /var/www/html/mpapws/public
       context: ./build/mpapws
     image: iutlr-info-apache-symfony5-mpapws
@@ -10,7 +10,7 @@ services:
     ports:
       - 9999:80
     volumes:
-      - ./mpapws:/var/www/html/mpapws:delegated  
+      - ./mpapws:/var/www/html/mpapws:delegated
     networks:
       - mpapws-network
   mysql:
@@ -27,6 +27,19 @@ services:
       MYSQL_USER: mpapws
       MYSQL_PASSWORD: mpapws
       MYSQL_ROOT_PASSWORD: mpapws
+    networks:
+      - mpapws-network
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: "mpapws"
+    restart: always
+    ports:
+      - 2000:80
+    volumes:
+      - /sessions
     networks:
       - mpapws-network
 networks:
