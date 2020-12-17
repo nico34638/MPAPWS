@@ -37,6 +37,12 @@ class Product
      */
     private $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="products", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $producers;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Product
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getProducers(): ?User
+    {
+        return $this->producers;
+    }
+
+    public function setProducers(?User $producers): self
+    {
+        $this->producers = $producers;
 
         return $this;
     }

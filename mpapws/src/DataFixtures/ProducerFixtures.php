@@ -40,6 +40,7 @@ class ProducerFixtures extends Fixture
             else{
                 $user->setRoles(['ROLE_PRODUCER']);
             }
+            $user->setAddress($faker->address);
             $manager->persist($user);
         }
 
