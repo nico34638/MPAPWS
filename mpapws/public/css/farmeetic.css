@@ -46,6 +46,17 @@ header img {
     }
 }
 
+.card-perso{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width:1000px) {
+    .laBarre {
+        display: none;
+    }
+}
+
 .product-list {
     display: flex;
     flex-direction: row;
@@ -60,6 +71,7 @@ header img {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 .plus-de-produits{
     margin-top: 30px;
 }
@@ -69,63 +81,46 @@ header img {
     justify-content: center;
 }
 
-.footer {
+footer{
     background-color: #1b5e20;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 15px
+}
+
+footer div p{
+    color : #FFFFFF
+}
+
+#hr1{
+    width: 15em
+}
+
+#hr2{
+    width: 10em
+}
+
+#hr3{
+    width: 7em
+}
+
+footer p {
+    color : white
+}
+
+footer h6 {
+    font-weight: bold;
+    font-size: 25px
 }
 
 footer a{
-    color: #FFFFFF;
-}
-
-footer a:link {
-    text-decoration: none;
-}
-
-footer a:visited {
-    text-decoration: none;
+    color: white;
+    text-decoration: none
 }
 
 footer a:hover {
-    text-decoration: underline;
-}
-
-footer a:active {
-    text-decoration: underline;
-}
-
-
-footer li{
-    list-style-type: none;
     color: white;
+    text-decoration: underline
 }
 
-footer li h6 {
-    font-weight: bold;
-    font-size: 25px;
-}
 
-footer li a {
-    color: white;
-}
-footer li a:hover {
-    color: white;
-    text-decoration: underline;
-}
 
-footer li a:active {
-    color: white;
-    text-decoration: underline;
-}
-
-.card-perso{
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-@media screen and (max-width:1000px) {
-    .laBarre {
-        display: none;
-    }
-}
