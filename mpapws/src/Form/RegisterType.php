@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -35,7 +36,22 @@ class RegisterType extends AbstractType
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe']
             ])
-            ->add('address', TextType::class, ['label' => 'Adresse'])
+            ->add('city', TextType::class, [
+                'mapped' => false,
+                'label' => "Ville"
+            ])
+            ->add('postalCode', TextType::class, [
+                'mapped' => false,
+                'label' => "Code postal"
+            ])
+            ->add('street', TextType::class, [
+                'mapped' => false,
+                'label' => "Rue"
+            ])
+            ->add('numberStreet', IntegerType::class, [
+                'mapped' => false,
+                'label' => "Numéro de la rue"
+            ])
             ->add('producteur', CheckboxType::class, [
                 'mapped' => false,
                 'label' => "Je suis un producteur",
