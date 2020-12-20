@@ -8,6 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class MapController
+ * @package App\Controller
+ */
 class MapController extends AbstractController
 {
     /**
@@ -17,6 +21,10 @@ class MapController extends AbstractController
     {
         $query = new ListProducersQuery();
         $producers = $producersHandler->handle($query);
+
+        // Temporaire pour reduire le nombre de points sur la map
+        $producers = array_splice($producers, 11);
+
         return $this->render('map/index.html.twig', [
             'producers' => $producers,
         ]);
