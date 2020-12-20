@@ -14,6 +14,7 @@ header img {
     background-color: #33691e;
     border: #1b5e20;
 }
+
 .carousel .carousel-item h1 {
     position: absolute;
     bottom: 42%;
@@ -21,6 +22,7 @@ header img {
     background-color: transparent;
     font-weight: bold;
 }
+
 .farm-card .card-content {
     display: flex;
     justify-content: center;
@@ -34,14 +36,14 @@ header img {
     border-radius: 8px;
 }
 
-.info{
+.info {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
 @media screen and (max-width: 500px) {
-    .info{
+    .info {
         flex-direction: column;
     }
 }
@@ -60,7 +62,8 @@ header img {
     margin-top: 15px;
     margin-bottom: 15px;
 }
-.plus-de-produits{
+
+.plus-de-produits {
     margin-top: 30px;
 }
 
@@ -75,7 +78,7 @@ header img {
     padding-bottom: 25px;
 }
 
-footer a{
+footer a {
     color: #FFFFFF;
 }
 
@@ -96,7 +99,7 @@ footer a:active {
 }
 
 
-footer li{
+footer li {
     list-style-type: none;
     color: white;
 }
@@ -109,6 +112,7 @@ footer li h6 {
 footer li a {
     color: white;
 }
+
 footer li a:hover {
     color: white;
     text-decoration: underline;
@@ -119,13 +123,19 @@ footer li a:active {
     text-decoration: underline;
 }
 
-.card-perso{
+.card-perso {
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
     .laBarre {
         display: none;
     }
+}
+
+.map {
+    height: 70vh;
+    width: 60vw;
+    margin: 20vh 10vw
 }
