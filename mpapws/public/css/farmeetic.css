@@ -82,7 +82,7 @@ header img {
 }
 
 footer{
-    background-color: #1b5e20;
+    background-color: #1b5e20!important;
     padding-top: 10px;
     padding-bottom: 15px
 }
