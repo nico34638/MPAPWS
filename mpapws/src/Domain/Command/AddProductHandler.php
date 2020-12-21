@@ -27,6 +27,9 @@ class AddProductHandler
         $this->catalogOfProducts = $catalogOfProducts;
     }
 
+    /**
+     * @param AddProductCommand $command
+     */
     public function handle(AddProductCommand $command)
     {
         $this->catalogOfProducts->addProduct($command);

@@ -21,4 +21,5 @@ interface CatalogOfProducts
      * @return mixed
      */
     public function addProduct(AddProductCommand $command);
+
 }
