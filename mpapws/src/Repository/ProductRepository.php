@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Domain\CatalogOfProducts;
+use App\Domain\Command\AddProductCommand;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -52,5 +53,11 @@ class ProductRepository extends ServiceEntityRepository implements CatalogOfProd
     public function allProducts(): iterable
     {
         return $this->findAll();
+    }
+
+
+    public function addProduct(AddProductCommand $command)
+    {
+         $this->getEntityManager()->persist($command->getProduct());
     }
 }
