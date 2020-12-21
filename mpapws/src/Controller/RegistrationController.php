@@ -42,6 +42,13 @@ class RegistrationController extends AbstractController
                 $password = $passwordEncoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($password);
 
+                $user->setAddress(
+                    $form->get('numberStreet')->getData() . " " .
+                    $form->get('street')->getData() . " " .
+                    $form->get('city')->getData() . " " .
+                    $form->get('postalCode')->getData() . " "
+                );
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();

@@ -75,12 +75,33 @@
                                         {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
                                     </div>
                                 </li>
-                                <li class="col-md-12">
+
+                                <li class="col-md-8">
                                     <div class="col-md-10">
-                                        {{ form_label(form.address) }}
-                                        {{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': "Votre adresse"}}) }}
+                                        {{ form_label(form.city) }}
+                                        {{ form_widget(form.city, {'attr': {'class': 'form-control', 'placeholder': "Votre ville"}}) }}
                                     </div>
                                 </li>
+                                <li class="col-md-4">
+                                    <div class="col-md-10">
+                                        {{ form_label(form.postalCode) }}
+                                        {{ form_widget(form.postalCode, {'attr': {'class': 'form-control', 'placeholder': "Votre code postal"}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-9">
+                                    <div class="col-md-12">
+                                        {{ form_label(form.street) }}
+                                        {{ form_widget(form.street, {'attr': {'class': 'form-control', 'placeholder': "Votre rue"}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-3">
+                                    <div class="col-md-12">
+                                        {{ form_label(form.numberStreet) }}
+                                        {{ form_widget(form.numberStreet, {'attr': {'class': 'form-control', 'placeholder': "Le numéro de la rue"}}) }}
+                                    </div>
+                                </li>
+
+
                                 <li class="col-md-12">
                                     <div class="input-group form-check">
                                         <div class="col-md-10">
