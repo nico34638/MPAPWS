@@ -11,8 +11,8 @@
             <div class="row">
                 <div class="col-lg-10">
                     <h3>Création d'un produit </h3>
-                    <form method="post">
-                        {{ form_start(form) }}
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ form_start(form, {'multipart': true}) }}
                         {{ form_errors(form) }}
 
                         <ul class="row">
@@ -40,6 +40,13 @@
                                     </div>
                                 </div>
                             </li>
+
+                            <li class="col-md-12">
+
+                                {{ form_row(form.imageFile) }}
+
+                            </li>
+
 
                             <li class="col-md-12">
                                 <button class="register">Ajouter le produit</button>
