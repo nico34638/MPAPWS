@@ -8,6 +8,7 @@ use App\Domain\Query\ListProductsHandler;
 use App\Domain\Query\ListProductsQuery;
 use App\Entity\Product;
 use App\Form\ProductType;
+use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,12 +72,18 @@ class ProductsController extends AbstractController
 
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
-                $product->setSourceImage("uploads/products/" . $newFilename);
-            }
-            else
+
+                $path = "uploads/products/" . $newFilename;
+
+                $img = Image::make($path)->resize(150, 150)->save();
+
+
+                $product->setSourceImage($path);
+            } else
             {
                 $product->setSourceImage('https://via.placeholder.com/150/93A8AC/000000?Text=FarMeetic');
             }
+
 
             $product->setProducers($security->getUser());
             $command = new AddProductCommand($product);
