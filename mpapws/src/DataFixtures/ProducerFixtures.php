@@ -40,9 +40,20 @@ class ProducerFixtures extends Fixture
             else{
                 $user->setRoles(['ROLE_PRODUCER']);
             }
-            $user->setAddress($faker->address);
+            $user->setAddress($faker->address . 'France');
             $manager->persist($user);
         }
+
+        $user = new User();
+        $user->setFirstName('producteur');
+        $user->setLastName('producteur');
+        $user->setUsername('producteur');
+        $user->setEmail('producteur@gmail.com');
+        $user->setPassword($this->encoder->encodePassword($user, 'producteur'));
+        $user->setRoles(['ROLE_PRODUCER']);
+        $user->setAddress('25 rue emile normandin 17000 La rochelle');
+        $manager->persist($user);
+
 
         $manager->flush();
     }

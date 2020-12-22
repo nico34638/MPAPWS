@@ -35,7 +35,7 @@ class ProductsController extends AbstractController
     }
 
     /**
-     * @Route("/produits/admin/ajouter", name="addProduct")
+     * @Route("/admin/produits/ajouter", name="addProduct")
      * @param Request $request
      * @param AddProductHandler $handler
      * @param Security $security
@@ -67,14 +67,10 @@ class ProductsController extends AbstractController
                     );
                 } catch (FileException $e)
                 {
-                    // ... handle exception if something happens during file upload
                 }
 
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-
                 $path = "uploads/products/" . $newFilename;
-
+                // Resize image
                 $img = Image::make($path)->resize(150, 150)->save();
 
 
@@ -88,6 +84,8 @@ class ProductsController extends AbstractController
             $product->setProducers($security->getUser());
             $command = new AddProductCommand($product);
             $handler->handle($command);
+
+            return $this->redirectToRoute('products');
         }
 
         return $this->render('products/admin/addProduct.html.twig', [
