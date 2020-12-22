@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Validator\Constraints\Image;
 
 
 /**
@@ -31,7 +32,10 @@ class ProductType extends AbstractType
             ->add('imageFile', FileType::class, [
                 'label' => 'Image du produit',
                 'mapped' => false,
-                'required' => false
+                'required' => false,
+                'constraints' => new Image([
+                    'maxSize' => '5M'
+                ])
             ])
         ;
     }
