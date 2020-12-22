@@ -135,8 +135,62 @@ footer a:hover {
     }
 }
 
+/**
+ * Carte
+ */
+
 .map {
     height: 70vh;
     width: 60vw;
     margin: 20vh 10vw
+}
+
+/**
+ * Formulaire
+ */
+input.enter {
+    background: #fff;
+    border: 1px solid #cccccc;
+    height: 52px;
+    line-height: 50px;
+    width: 100%;
+    padding: 0 5px;
+    border-radius: 3px;
+}
+
+input.form-control {
+    height: 53px;
+    line-height: 51px;
+    border-color: #cccccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button.register {
+    width: 50%;
+    border: 0;
+    border-radius: 5px;
+    line-height: 53px;
+    background: #66bb6a;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button{
+    background: #1b5e20;
+    color: #fff;
+}
+
+ul.row {
+    margin: 0 -15px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.addProduct{
+    margin: 120px 0;
 }

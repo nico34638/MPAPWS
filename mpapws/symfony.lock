@@ -99,6 +99,12 @@
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
+    "guzzlehttp/psr7": {
+        "version": "1.7.0"
+    },
+    "intervention/image": {
+        "version": "2.5.1"
+    },
     "jzonta/faker-restaurant": {
         "version": "1.1.11"
     },
@@ -141,11 +147,17 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.3"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -298,6 +310,9 @@
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
+    },
+    "symfony/mime": {
+        "version": "v5.2.1"
     },
     "symfony/monolog-bridge": {
         "version": "v4.3.11"

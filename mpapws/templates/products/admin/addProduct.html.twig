@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Ajout d'un produit{% endblock %}
+
+{% block body %}
+
+    <div class="addProduct">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <h3>Création d'un produit </h3>
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ form_start(form, {'multipart': true}) }}
+                        {{ form_errors(form) }}
+
+                        <ul class="row">
+                            <li class="col-md-6">
+                                <div class="input-group">
+                                    <div class="col-md-10">
+                                        {{ form_label(form.name) }}
+                                        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Le nom du produit'}}) }}
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-6">
+                                <div class="input-group">
+                                    <div class="col-md-10">
+                                        {{ form_label(form.description) }}
+                                        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'La description'}}) }}
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-6">
+                                <div class="input-group">
+                                    <div class="col-md-10">
+                                        {{ form_label(form.price) }}
+                                        {{ form_widget(form.price, {'attr': {'class': 'form-control', 'placeholder': 'Le prix'}}) }}
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="col-md-12">
+
+                                {{ form_row(form.imageFile) }}
+
+                            </li>
+
+
+                            <li class="col-md-12">
+                                <button class="register">Ajouter le produit</button>
+                            </li>
+                            {{ form_end(form) }}
+                        </ul>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
