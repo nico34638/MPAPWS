@@ -94,25 +94,17 @@
                                         {{ form_widget(form.street, {'attr': {'class': 'form-control', 'placeholder': "Votre rue"}}) }}
                                     </div>
                                 </li>
-                                <li class="col-md-3">
-                                    <div class="col-md-12">
-                                        {{ form_label(form.numberStreet) }}
-                                        {{ form_widget(form.numberStreet, {'attr': {'class': 'form-control', 'placeholder': "Le numéro de la rue"}}) }}
-                                    </div>
-                                </li>
-
-
                                 <li class="col-md-12">
                                     <div class="input-group form-check">
-                                        <div class="col-md-10">
-                                            {{ form_widget(form.producteur, {'attr': {'class': 'form-check-input'}}) }}
-                                            {{ form_label(form.producteur) }}
+                                        <div class="col-md-12">
+                                            {{ form_widget(form.producer, {'attr': {'class': 'form-check-input'}}) }}
+                                            {{ form_label(form.producer) }}
                                         </div>
                                     </div>
                                 </li>
                                 <li class="col-md-12">
                                     <div class="input-group form-check">
-                                        <div class="col-md-10">
+                                        <div class="col-md-12">
                                             {{ form_widget(form.droitUtilisation, {'attr': {'class': 'form-check-input'}}) }}
                                             {{ form_label(form.droitUtilisation) }}
                                         </div>

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Domain\Command\RegisterCommand;
+use App\Domain\Command\RegisterHandler;
 use App\Form\RegisterType;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
@@ -21,7 +23,8 @@ class RegistrationController extends AbstractController
      * @Route("/register", name="registration")
      */
     public function register(Request $request,
-                             UserPasswordEncoderInterface $passwordEncoder): Response
+                             UserPasswordEncoderInterface $passwordEncoder,
+                             RegisterHandler $handler): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -31,7 +34,7 @@ class RegistrationController extends AbstractController
         {
             if ($form->get('droitUtilisation')->getData() == "true")
             {
-                if ($form->get('producteur')->getData() == "true")
+                if ($form->get('producer')->getData() == "true")
                 {
                     $user->addRoles('ROLE_PRODUCER');
                 } else
@@ -43,15 +46,13 @@ class RegistrationController extends AbstractController
                 $user->setPassword($password);
 
                 $user->setAddress(
-                    $form->get('numberStreet')->getData() . " " .
                     $form->get('street')->getData() . " " .
                     $form->get('city')->getData() . " " .
                     $form->get('postalCode')->getData() . " "
                 );
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
+                $command = new RegisterCommand($user);
+                $handler->handle($command);
 
                 $this->addFlash('success', 'Votre compte à bien été enregistré.');
                 return $this->redirectToRoute('app_login');

@@ -47,11 +47,7 @@ class RegisterType extends AbstractType
                 'mapped' => false,
                 'label' => "Rue"
             ])
-            ->add('numberStreet', IntegerType::class, [
-                'mapped' => false,
-                'label' => "Numéro de la rue"
-            ])
-            ->add('producteur', CheckboxType::class, [
+            ->add('producer', CheckboxType::class, [
                 'mapped' => false,
                 'label' => "Je suis un producteur",
                 'required' => false,

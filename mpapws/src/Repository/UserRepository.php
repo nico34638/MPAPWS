@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Domain\CatalogOfProducers;
+use App\Domain\CatalogOfUsers;
+use App\Domain\Command\RegisterCommand;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository implements CatalogOfProducers
+class UserRepository extends ServiceEntityRepository implements CatalogOfProducers, CatalogOfUsers
 {
     /**
      * UserRepository constructor.
@@ -49,5 +51,18 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * @param RegisterCommand $command
+     * @return mixed|void
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function addUser(RegisterCommand $command)
+    {
+        $em =  $this->getEntityManager();
+        $em->persist($command->getUser());
+        $em->flush();
     }
 }
