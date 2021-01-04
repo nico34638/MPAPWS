@@ -71,7 +71,7 @@ class ProductsController extends AbstractController
 
                 $path = "uploads/products/" . $newFilename;
                 // Resize image
-                $img = Image::make($path)->resize(150, 150)->save();
+                $img = Image::make($path)->resize(250, 250)->save();
 
 
                 $product->setSourceImage($path);
