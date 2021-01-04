@@ -4,6 +4,7 @@
 namespace App\Domain;
 
 use App\Domain\Command\AddProductCommand;
+use App\Domain\Query\SearchProductQuery;
 use App\Entity\Product;
 
 /**
@@ -21,5 +22,10 @@ interface CatalogOfProducts
      * @return mixed
      */
     public function addProduct(AddProductCommand $command);
+
+    /**
+     * return mixed
+     */
+    public function searchProduct(SearchProductQuery $query);
 
 }

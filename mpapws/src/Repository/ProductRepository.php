@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Domain\CatalogOfProducts;
 use App\Domain\Command\AddProductCommand;
+use App\Domain\Query\SearchProductQuery;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,15 +26,6 @@ class ProductRepository extends ServiceEntityRepository implements CatalogOfProd
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Product::class);
-    }
-
-    public function fullText($param)
-    {
-        return  $this->createQueryBuilder('p')
-            ->where('MATCH_AGAINST(p.name, p.description) AGAINST(:param boolean)> 0.05')
-            ->setParameter('param', $param)
-            ->getQuery()
-            ->getResult();
     }
 
     // /**
@@ -65,17 +57,39 @@ class ProductRepository extends ServiceEntityRepository implements CatalogOfProd
     }
     */
 
+    /**
+     * @return iterable
+     */
     public function allProducts(): iterable
     {
         return $this->findAll();
     }
 
 
+    /**
+     * @param AddProductCommand $command
+     * @return mixed|void
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function addProduct(AddProductCommand $command)
     {
         //dd($command->getProduct());
         $em =  $this->getEntityManager();
         $em->persist($command->getProduct());
         $em->flush();
+    }
+
+    /**
+     * @param SearchProductQuery $query
+     * @return int|mixed|string
+     */
+    public function searchProduct(SearchProductQuery $query)
+    {
+        return  $this->createQueryBuilder('p')
+            ->where('MATCH_AGAINST(p.name, p.description) AGAINST(:param boolean)> 0.05')
+            ->setParameter('param', $query->getKeyWord())
+            ->getQuery()
+            ->getResult();
     }
 }
