@@ -37,18 +37,38 @@
                         <li class="nav-item">
                             <a class="nav-link text-white font-weight-bold" href="/producteurs">Producteurs</a>
                         </li>
+                        {% if is_granted('ROLE_PRODUCER') %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white font-weight-bold" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="background-color: #90a833">
+                                    Espace producteur
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/#">Ajouter un produit</a>
+                                    <a class="dropdown-item" href="/#">Mes Produits</a>
+                                    <a class="dropdown-item" href="/#">Mes évènements</a>
+                                    <a class="dropdown-item" href="/#">Écrire une News</a>
+                                </div>
+                            </li>
+                        {% endif %}
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Carotte, boulgour, ..."
                                aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
                     </form>
-                    <a class="nav-link text-white font-weight-bold" href="/login">Connexion</a>
-                    <a class="text-white font-weight-bold laBarre"> | </a>
-                    <a class="nav-link text-white font-weight-bold" href="/register">Inscription</a>
-
+                    {% if not app.user %}
+                        <a class="nav-link text-white font-weight-bold" href="/login">Connexion</a>
+                        <a class="text-white font-weight-bold laBarre"> | </a>
+                        <a class="nav-link text-white font-weight-bold" href="/register">Inscription</a>
+                    {% else %}
+                        <a class="nav-link text-white font-weight-bold" href="/profil">Profil</a>
+                        <a class="text-white font-weight-bold laBarre"> | </a>
+                        <a class="nav-link text-white font-weight-bold" href="/logout">Déconnexion</a>
+                    {% endif %}
                 </div>
             </nav>
+
         </header>
 
         {% block body %} {% endblock %}

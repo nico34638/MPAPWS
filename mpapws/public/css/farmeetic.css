@@ -10,6 +10,11 @@ header img {
     background-color: #1b5e20;
 }
 
+.btn-success {
+    background-color: #33691e;
+    border: #1b5e20;
+}
+
 .btn-primary {
     background-color: #33691e;
     border: #1b5e20;
