@@ -7,6 +7,7 @@ use App\Domain\Command\AddProductCommand;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,9 +18,22 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductRepository extends ServiceEntityRepository implements CatalogOfProducts
 {
+    /**
+     * ProductRepository constructor.
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Product::class);
+    }
+
+    public function fullText($param)
+    {
+        return  $this->createQueryBuilder('p')
+            ->where('MATCH_AGAINST(p.name, p.description) AGAINST(:param boolean)> 0.05')
+            ->setParameter('param', $param)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**
