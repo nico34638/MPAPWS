@@ -17,7 +17,7 @@ class SearchController extends AbstractController
     public function index($param): Response
     {
 
-        
+
 
         return $this->render('search/index.html.twig', [
             'controller_name' => 'SearchController',
