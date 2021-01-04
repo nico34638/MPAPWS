@@ -8,9 +8,11 @@
 		<hr>
 		<br>
 		
-		<div class="flex-wrap" style="display: flex; justify-content: space-around">
-			<div class="card" style="width: 18rem;">
-				<img src="{{ product.sourceImage }}" class="card-img-top" alt="...">
+		<div class="flex-wrap" style="display: flex; justify-content: space-around; align-items: center;">
+			<div style="width: 18rem;">
+				<div style="margin: auto;text-align: center">
+					<img src="{{ product.sourceImage }}" class="img-thumbnail">
+				</div>
 			</div>
 			
 			<div class="card" style="width: 18rem;">
@@ -20,6 +22,11 @@
 					<h2 class="card-subtitle mb-2 text-muted">{{ product.price }} €/Kg</h2>
 					<br>
 					<a href="/producteurs/{{ producer.id }}" class="btn btn-primary" alt="Le producteur">{{ producer.firstName }} {{ producer.lastName }}</a>
+					<p style="margin-top: 5%">
+						{{ producer.address }}
+						<br>
+						<a style="margin-top: 1%" href="/carte">Carte</a>
+					</p>
 				</div>
 			</div>
 		</div>
