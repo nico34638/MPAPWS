@@ -26,7 +26,7 @@
                 {% for p in products %}
                     <div class="col-md-4">
                         <div class="card card-perso">
-                            <img src="{{ p.sourceImage }}" class="card-img-top" alt="...">
+                            <img src="{{ asset(p.sourceImage) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ p.name }}</h5>
                                 <p class="card-text">{{ p.description | slice(0, 100) }}</p>
