@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ouaah trop beaux les devs{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/card.css" />
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="tinder">
+            <div class="tinder--status">
+                <i class="fa fa-remove"></i>
+                <i class="fa fa-heart"></i>
+            </div>
+            <div class="tinder--cards">
+                <div class="tinder--card">
+                    <img src="images/Farmeetic/devs/louis.jpg" />
+                    <h3>Louis Guillet</h3>
+                    <p>Phrase de description à modifier au besoin</p>
+                </div>
+                <div class="tinder--card">
+                    <img src="images/Farmeetic/devs/nico.jpg" />
+                    <h3>Nicolas Fidel</h3>
+                    <p>Phrase de description à modifier au besoin</p>
+                </div>
+                <div class="tinder--card">
+                    <img src="images/Farmeetic/devs/remi.jpg" />
+                    <h3>Rémi Mignon</h3>
+                    <p>Phrase de description à modifier au besoin</p>
+                </div>
+                <div class="tinder--card">
+                    <img src="images/Farmeetic/devs/mathieu.jpg" />
+                    <h3>Mathieu Lucas</h3>
+                    <p>Phrase de description à modifier au besoin</p>
+                </div>
+                <div class="tinder--card">
+                    <img src="images/Farmeetic/devs/mathis.jpg" />
+                    <h3>Mathis Devigne</h3>
+                    <p>Phrase de description à modifier au besoin</p>
+                </div>
+            </div>
+            <div class="tinder--buttons">
+                <button id="nope"><i class="fa fa-remove"></i></button>
+                <button id="love"><i class="fa fa-heart"></i></button>
+                <button id="refresh"><a href="/devs"><i class="fas fa-redo-alt"></i></a></button>
+            </div>
+        </div>
+    </body>
+{% endblock %}
+
+{% block javascripts %}
+    <script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
+    <script  src="js/card.js"></script>
+{% endblock %}
+
