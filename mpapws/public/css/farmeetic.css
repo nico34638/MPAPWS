@@ -6,6 +6,16 @@ header img {
     background-color: #33691e;
 }
 
+h3{
+    margin-top: 25px;
+}
+
+.title-list{
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 40px;
+}
+
 .bg-green {
     background-color: #1b5e20;
 }

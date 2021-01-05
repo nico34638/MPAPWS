@@ -12,6 +12,7 @@ use App\Domain\Query\OneProductHandler;
 use App\Domain\Query\OneProductQuery;
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Form\SearchType;
 use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -23,18 +24,30 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProductsController extends AbstractController
 {
+
     /**
      * @Route("/produits", name="products")
      * @param ListProductsHandler $handler
+     * @param Request $request
      * @return Response
      */
-    public function listPrd(ListProductsHandler $handler): Response
+    public function listProduct(ListProductsHandler $handler, Request $request): Response
     {
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $content = $form->getData()["content"];
+            return $this->redirect('search/' . $content);
+        }
+
         $query = new ListProductsQuery();
         $products = $handler->handle($query);
 
         return $this->render('products/listProducts.html.twig', [
             'products' => $products,
+            'form' => $form->createView()
         ]);
     }
 
