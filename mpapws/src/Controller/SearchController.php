@@ -4,11 +4,7 @@ namespace App\Controller;
 
 use App\Domain\Query\SearchProductHandler;
 use App\Domain\Query\SearchProductQuery;
-use App\Entity\Product;
 use App\Form\SearchType;
-use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\QueryBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -24,9 +20,17 @@ class SearchController extends AbstractController
      */
     public function index(Request $request): Response
     {
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $content = $form->getData()["content"];
+            return $this->redirect('search/' . $content);
+        }
 
         return $this->render('search/index.html.twig', [
-
+            'form' => $form->createView()
         ]);
     }
 
@@ -46,6 +50,7 @@ class SearchController extends AbstractController
 
         return $this->render('search/searchResult.html.twig', [
             'products' => $products,
+            'param' => $param
         ]);
     }
 

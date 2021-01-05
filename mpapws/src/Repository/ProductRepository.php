@@ -7,8 +7,6 @@ use App\Domain\Command\AddProductCommand;
 use App\Domain\Query\SearchProductQuery;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -86,7 +84,7 @@ class ProductRepository extends ServiceEntityRepository implements CatalogOfProd
      */
     public function searchProduct(SearchProductQuery $query)
     {
-        return  $this->createQueryBuilder('p')
+        return $this->createQueryBuilder('p')
             ->where('MATCH_AGAINST(p.name, p.description) AGAINST(:param boolean)> 0.05')
             ->setParameter('param', $query->getKeyWord())
             ->getQuery()
