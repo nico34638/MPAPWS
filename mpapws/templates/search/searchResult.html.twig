@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultat de la recherche{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-top: 80px">
+
+        {% if products is empty %}
+
+
+            <div class="row" style="margin-top: 150px;  margin-bottom: 250px">
+                <div class="col-md-12">
+                    <h1>Aucun produits trouves</h1>
+                </div>
+
+                <div class="col-md-12">
+                    <p>Aucun produits n'a été trouvé : {{ param }}</p>
+                </div>
+            </div>
+        {% else %}
+
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 50px;">
+                    <h1 style="margin: 20px">Résultat de la recherche voici les produits correspondants : </h1>
+                </div>
+                {% for p in products %}
+                    <div class="col-md-4">
+                        <div class="card card-perso">
+                            <img src="{{ asset(p.sourceImage) }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ p.name }}</h5>
+                                <p class="card-text">{{ p.description | slice(0, 100) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
