@@ -6,6 +6,10 @@ use App\Domain\Command\AddProductCommand;
 use App\Domain\Command\AddProductHandler;
 use App\Domain\Query\ListProductsHandler;
 use App\Domain\Query\ListProductsQuery;
+use App\Domain\Query\OneProducerHandler;
+use App\Domain\Query\OneProducerQuery;
+use App\Domain\Query\OneProductHandler;
+use App\Domain\Query\OneProductQuery;
 use App\Entity\Product;
 use App\Form\ProductType;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -31,6 +35,24 @@ class ProductsController extends AbstractController
 
         return $this->render('products/listProducts.html.twig', [
             'products' => $products,
+        ]);
+    }
+
+    /**
+     * @Route("/produits/{id}", name="productDetails")
+     * @param OneProductHandler $handler
+     * @param $id
+     * @return Response
+     */
+    public function detailsPrd(OneProductHandler $handler, $id): Response
+    {
+        $query = new OneProductQuery();
+        $product = $handler->handle($query, $id);
+
+
+        return $this->render('products/detailsProduct.html.twig', [
+            'product' => $product,
+            'producer' => $product->getProducers(),
         ]);
     }
 
@@ -71,7 +93,7 @@ class ProductsController extends AbstractController
 
                 $path = "uploads/products/" . $newFilename;
                 // Resize image
-                $img = Image::make($path)->resize(150, 150)->save();
+                $img = Image::make($path)->resize(250, 250)->save();
 
 
                 $product->setSourceImage($path);

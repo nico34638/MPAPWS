@@ -30,14 +30,18 @@
 	
 	<div class="info">
 		<div class="farm-card mr-5 ml-5 mt-5 mb-5" style="width: 18rem;">
-			<img src="images/h2news1.jpg" class="img-border card-img-top" alt="...">
+			<a href="/producteurs">
+				<img src="images/h2news1.jpg" class="img-border card-img-top">
+			</a>
 			<div class="card-content">
 				<a href="/producteurs" class="btn btn-success font-weight-bold">{{ nbProducer }} Producteurs</a>
 			</div>
 		</div>
 		
 		<div class="farm-card mr-5 ml-5 mt-5 mb-5" style="width: 18rem;">
-			<img src="images/vegetables-752153_1920.jpg" class="img-border card-img-top" alt="...">
+			<a href="/produits">
+				<img src="images/vegetables-752153_1920.jpg" class="img-border card-img-top">
+			</a>
 			<div class="card-content">
 				<a href="/produits" class="btn btn-success font-weight-bold">{{ nbProducts }} Produits</a>
 			</div>
@@ -50,22 +54,24 @@
 		
 		{% for p in products %}
 			<div class="card" style="width: 18rem;">
-				<img src="{{ p.sourceImage }}" class="card-img-top">
+				<a href="produits/{{ p.id }}">
+					<img src="{{ p.sourceImage }}" class="card-img-top">
+				</a>
 				<div class="card-body">
 					<h5 class="card-title">{{ p.name }}</h5>
 					<p class="card-text">{{ p.price }}€ le Kg</p>
 					<p class="card-text">{{ p.description }}</p>
-					<a href="#" class="btn btn-success">En savoir plus</a>
+					<a href="produits/{{ p.id }}" class="btn btn-success">En savoir plus</a>
 				</div>
 			</div>
-			{% endfor %}
+		{% endfor %}
 		
 		
 	
 	</div>
 	
 	<div class="center">
-		<a href="/produits"  type="button" class="plus-de-produits btn btn-primary btn-lg">Plus de produits</a>
+		<a href="/produits"  type="button" class="plus-de-produits btn btn-success btn-lg">Plus de produits</a>
 	</div>
 	<hr>
 {% endblock %}
