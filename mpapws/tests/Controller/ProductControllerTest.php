@@ -4,6 +4,7 @@
 namespace App\Tests\Controller;
 
 
+use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -33,6 +34,23 @@ class ProductControllerTest extends WebTestCase
     public function test_display_list_products()
     {
         $this->client->request('GET', '/produits');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * Test for the displaying of the details of a product
+     */
+    public function test_display_product_details()
+    {
+        $productRepository = static::$container->get(ProductRepository::class);
+
+        $i = 0;
+        for ($i = 1; isset($testProduct); $i++) {
+            // retrieve the test user
+            $testProduct = $productRepository->findOneById($i);
+        }
+
+        $this->client->request('GET', '/produits/'.$i);
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
