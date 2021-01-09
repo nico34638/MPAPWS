@@ -39,7 +39,8 @@ class ProductsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $content = $form->getData()["content"];
-            return $this->redirect('search/' . $content);
+            return $this->redirectToRoute('searchParam', ['param' => $content]);
+
         }
 
         $query = new ListProductsQuery();
