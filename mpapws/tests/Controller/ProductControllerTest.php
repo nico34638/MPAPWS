@@ -44,13 +44,9 @@ class ProductControllerTest extends WebTestCase
     {
         $productRepository = static::$container->get(ProductRepository::class);
 
-        $i = 0;
-        for ($i = 1; isset($testProduct); $i++) {
-            // retrieve the test user
-            $testProduct = $productRepository->findOneById($i);
-        }
+        $products = $productRepository->findAll();
 
-        $this->client->request('GET', '/produits/'.$i);
+        $this->client->request('GET', '/produits/'. $products[0]->getId());
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
