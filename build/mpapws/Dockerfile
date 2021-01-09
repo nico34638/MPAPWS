@@ -1,7 +1,7 @@
 FROM registry.univ-lr.fr:81/iutlr-info/iutlr-info-apache2-php7.4-symfony5.1
 
-LABEL Maintainer="Equipe MPA-PWS Z-3-1"
-LABEL Vendor="Equipe MPA-PWS Z-3-1"
+LABEL Maintainer="Equipe MPA-PWS Z_3-1"
+LABEL Vendor="Equipe MPA-PWS Z_3-1"
 LABEL Description="Apache2-Symfony5.2-PHP7.4"
 LABEL Version="Dec-2020"
 
