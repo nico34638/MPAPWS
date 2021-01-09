@@ -44,13 +44,23 @@ class SearchController extends AbstractController
     public function searchWithParam($param, Request $request, SearchProductHandler $handler): Response
     {
 
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $content = $form->getData()["content"];
+            return $this->redirectToRoute('searchParam', ['param' => $content]);
+        }
+
         $query = new SearchProductQuery($param);
         $products = $handler->handle($query);
 
 
         return $this->render('search/searchResult.html.twig', [
             'products' => $products,
-            'param' => $param
+            'param' => $param,
+            'form' => $form->createView()
         ]);
     }
 
@@ -67,11 +77,11 @@ class SearchController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $content = $form->getData()["content"];
-            return $this->render('search/redirectToSearch.html.twig', [
-                'content' => $content
-            ]);
-            //return $this->redirectToRoute('search');
-            //($form->getData());
+            return new Response(
+                "<script>
+                window.location.href='/search/" . $content . "'
+            </script>"
+            );
         }
 
         return $this->render('search/searchNavBar.html.twig', [
