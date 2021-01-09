@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Domain\Command\AddProductCommand;
 use App\Domain\Command\AddProductHandler;
+use App\Domain\Command\DeleteProductCommand;
+use App\Domain\Command\DeleteProductHandler;
 use App\Domain\Query\ListProductsHandler;
 use App\Domain\Query\ListProductsQuery;
 use App\Domain\Query\OneProducerHandler;
@@ -127,5 +129,17 @@ class ProductsController extends AbstractController
         return $this->render('products/admin/addProduct.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/admin/produits/{id}", name="deleteProduct", methods="DELETE")
+     * @param Product $product
+     * @return Response
+     */
+    public function deleteProduct(Product $product, DeleteProductHandler $handler): Response
+    {
+        $command = new DeleteProductCommand($product);
+        $handler->handle($command);
+        return $this->redirectToRoute('index');
     }
 }

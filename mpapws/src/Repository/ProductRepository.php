@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Domain\CatalogOfProducts;
 use App\Domain\Command\AddProductCommand;
+use App\Domain\Command\DeleteProductCommand;
 use App\Domain\Query\SearchProductQuery;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -89,5 +90,12 @@ class ProductRepository extends ServiceEntityRepository implements CatalogOfProd
             ->setParameter('param', $query->getKeyWord())
             ->getQuery()
             ->getResult();
+    }
+
+    public function deleteProduct(DeleteProductCommand $command)
+    {
+        $em =  $this->getEntityManager();
+        $em->remove($command->getProduct());
+        $em->flush();
     }
 }
