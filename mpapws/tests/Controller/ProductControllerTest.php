@@ -67,5 +67,11 @@ class ProductControllerTest extends WebTestCase
         $this->client->request('GET', '/admin/produits/ajouter');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
+
+    public function test_products_of_a_producer()
+    {
+        $this->client->request('GET', '/admin/produits/mesproduits');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
 }
 
