@@ -158,4 +158,25 @@ class ProductsController extends AbstractController
             'currentProducer' => $currentProducer,
         ]);
     }
+
+    /**
+     * @Route("/admin/produits/mesproduits/{id}", name="ModifProduct")
+     * @param $id
+     * @return Response
+     */
+    public function modificationOfMyProduct(Request $request, OneProductHandler $handler, $id): Response
+    {
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+        $query = new OneProductQuery();
+        $product = $handler->handle($query, $id);
+
+
+        return $this->render('products/admin/ModifProduct.html.twig', [
+            'product' => $product,
+            'form' => $form->createView()
+        ]);
+    }
+
 }

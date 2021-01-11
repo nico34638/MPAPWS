@@ -81,5 +81,24 @@ class ProductControllerTest extends WebTestCase
         $this->client->request('GET', '/admin/produits/mesproduits');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
+
+    public function test_modification_of_a_product_of_a_producer()
+    {
+        $userRepository = static::$container->get(UserRepository::class);
+
+        $productRepository = static::$container->get(ProductRepository::class);
+
+        // retrieve the test user
+        $testUser = $userRepository->findOneByEmail('producteur@gmail.com');
+
+        // simulate $testUser being logged in
+        $this->client->loginUser($testUser);
+
+        $products = $productRepository->findAll();
+
+        $this->client->request('GET', '/admin/produits/mesproduits/'. $products[0]->getId());
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
 }
 
