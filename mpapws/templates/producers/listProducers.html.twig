@@ -18,9 +18,10 @@
                             <p class="card-text"><small class="text-muted">{{ producer.email }}</small></p>
                             <p class="card-text"><a href="/producteurs/{{ producer.username }}" class="btn btn-success">En savoir plus</a></p>
 
-                            {% if app.user %}
+                            {% if app.user and producer.id not in followings %}
                                 <a href="/favoris/add/{{ producer.id }}"> <button class="btn btn-success">Ajouter au favoris</button></a>
                             {% endif %}
+
                         </div>
                     </div>
                 </div>

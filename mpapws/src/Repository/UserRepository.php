@@ -6,6 +6,7 @@ use App\Domain\CatalogOfProducers;
 use App\Domain\CatalogOfUsers;
 use App\Domain\Command\AddFollowingCommand;
 use App\Domain\Command\RegisterCommand;
+use App\Domain\Query\ListOfFavoritesQuery;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -50,8 +51,7 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
             ->andWhere('u.roles LIKE :role')
             ->setParameter('role', '%ROLE_PRODUCER%')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     /**
@@ -62,7 +62,7 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
      */
     public function addUser(RegisterCommand $command)
     {
-        $em =  $this->getEntityManager();
+        $em = $this->getEntityManager();
         $em->persist($command->getUser());
         $em->flush();
     }
@@ -79,10 +79,14 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
         $producer = $command->getProducer();
 
         $currentUser->addFollowing($producer);
-
-        $em =  $this->getEntityManager();
+        $em = $this->getEntityManager();
 
         $em->persist($currentUser);
         $em->flush();
+    }
+
+    public function allFavorites(ListOfFavoritesQuery $query): iterable
+    {
+        return $this->findOneBy(['id' => $query->getUser()->getId()])->getFollowing()->toArray();
     }
 }
