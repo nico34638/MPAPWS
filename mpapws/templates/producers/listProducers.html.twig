@@ -9,14 +9,14 @@
             {% for producer in producers %}
                 <div class="col-md-4">
                     <div class="card card-perso" >
-                        <a href="/producteurs/{{ producer.id }}">
+                        <a href="/producteurs/{{ producer.username }}">
                             <img src="https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic" class="card-img" alt="ntm">
                         </a>
                         <div class="card-body" >
                             <h5 class="card-title">{{ producer.firstName }} {{ producer.lastName }}</h5>
-                            <p class="card-text">Bonjour je suis le colonel moutarde et j'ai un micro-pénis</p>
+                            <p class="card-text">Je suis un producteur oui</p>
                             <p class="card-text"><small class="text-muted">{{ producer.email }}</small></p>
-                            <p class="card-text"><a href="/producteurs/{{ producer.id }}" class="btn btn-success">En savoir plus</a></p>
+                            <p class="card-text"><a href="/producteurs/{{ producer.username }}" class="btn btn-success">En savoir plus</a></p>
                         </div>
                     </div>
                 </div>

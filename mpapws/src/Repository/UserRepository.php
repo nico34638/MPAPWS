@@ -45,7 +45,7 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
     public function allProducers(): iterable
     {
         return $this->createQueryBuilder('u')
-            ->select('u.firstName, u.lastName, u.email, u.roles, u.address, u.id')
+            ->select('u.firstName, u.lastName, u.email, u.roles, u.address, u.username')
             ->andWhere('u.roles LIKE :role')
             ->setParameter('role', '%ROLE_PRODUCER%')
             ->getQuery()
@@ -65,4 +65,5 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
         $em->persist($command->getUser());
         $em->flush();
     }
+
 }
