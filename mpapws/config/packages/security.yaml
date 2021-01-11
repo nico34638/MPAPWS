@@ -26,5 +26,6 @@ security:
         - { path: ^/connected, roles: [ROLE_USER, ROLE_PRODUCER] }
         - { path: ^/favoris, roles: [ROLE_USER, ROLE_PRODUCER] }
         - { path: ^/admin/produits/ajouter, roles: ROLE_PRODUCER }
+        - { path: ^/admin/produits/mesproduits, roles: ROLE_PRODUCER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

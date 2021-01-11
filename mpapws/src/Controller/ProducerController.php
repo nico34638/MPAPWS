@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Domain\Query\ListOfFavoritesHandler;
 use App\Domain\Query\ListOfFavoritesQuery;
+
+use App\Domain\Query\detailProducerHandler;
+use App\Domain\Query\detailProducerQuery;
 use App\Domain\Query\ListProducersHandler;
 use App\Domain\Query\ListProducersQuery;
 use App\Repository\UserRepository;
@@ -39,6 +42,22 @@ class ProducerController extends AbstractController
         return $this->render('producers/listProducers.html.twig', [
             'producers' => $producers,
             'followings' => $id_tab
+        ]);
+    }
+
+    /**
+     * @Route("/producteurs/{username}", name="detailproducers")
+     * @param detailProducerHandler $handler
+     * @return Response
+     */
+    public function detailsProducers(detailProducerHandler $handler, $username): Response
+    {
+        $query = new detailProducerQuery();
+        $producer = $handler->handle($query, $username);
+
+
+        return $this->render('producers/detailProducers.html.twig', [
+            'producer' => $producer,
         ]);
     }
 }
