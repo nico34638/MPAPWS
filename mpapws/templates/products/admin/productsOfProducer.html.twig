@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un produit{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-top: 80px">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Liste de vos produits : </h3>
+            </div>
+            {% if app.user %}
+                {% if is_granted('ROLE_PRODUCER') %}
+                    {% for pct in currentProducer.products %}
+                            <div class="col-md-4">
+                                <div class="card card-perso">
+                                    <a href="/produits/{{ pct.id }}">
+                                        <img src="{{ pct.sourceImage }}" class="card-img-top" alt="...">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ pct.name }}</h5>
+                                        <p class="card-text">{{ pct.description | slice(0, 100) }}</p>
+                                        <p class="card-text">
+                                            <a href="/produits/{{ pct.id }}" class="btn btn-success">
+                                                Voir plus
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
