@@ -4,6 +4,7 @@
 namespace App\Domain;
 
 
+use App\Domain\Command\AddFollowingCommand;
 use App\Domain\Command\RegisterCommand;
 
 /**
@@ -19,4 +20,10 @@ interface CatalogOfUsers
      */
     public function addUser(RegisterCommand $command);
 
+
+    /**
+     * @param AddFollowingCommand $command
+     * @return mixed
+     */
+    public function addFollowing(AddFollowingCommand $command);
 }

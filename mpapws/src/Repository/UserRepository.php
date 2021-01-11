@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Domain\CatalogOfProducers;
 use App\Domain\CatalogOfUsers;
+use App\Domain\Command\AddFollowingCommand;
 use App\Domain\Command\RegisterCommand;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -66,4 +67,22 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
         $em->flush();
     }
 
+    /**
+     * @param AddFollowingCommand $command
+     * @return mixed|void
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function addFollowing(AddFollowingCommand $command)
+    {
+        $currentUser = $command->getCurrentUser();
+        $producer = $command->getProducer();
+
+        $currentUser->addFollowing($producer);
+
+        $em =  $this->getEntityManager();
+
+        $em->persist($currentUser);
+        $em->flush();
+    }
 }
