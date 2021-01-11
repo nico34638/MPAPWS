@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Domain\Command\AddFollowingCommand;
+use App\Domain\Command\AddFollowingHandler;
 use App\Entity\Product;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,11 +17,13 @@ class FavoritesController extends AbstractController
 {
 
     /**
-     * @Route("/favorites/add/{id_producer}", name="addFavorites")
+     * @Route("/favoris/add/{producer}", name="addFavorites")
      */
-    public function addFavorites(User $id_producer, EntityManagerInterface $entityManager): Response
+    public function addFavorites(User $producer, AddFollowingHandler $handler): Response
     {
         $currentUser = $this->getUser();
+        $command  = new AddFollowingCommand($currentUser, $producer);
+        $handler->handle($command);
 
         return $this->redirectToRoute('producers');
     }
