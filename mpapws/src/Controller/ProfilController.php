@@ -13,8 +13,16 @@ class ProfilController extends AbstractController
      */
     public function index(): Response
     {
+        $user = $this->getUser();
+
         return $this->render('profil/index.html.twig', [
-            'controller_name' => 'ProfilController',
+            'controller_name' => 'ProfilController()',
+            'username' => $user->getUsername(),
+            'firstName' => $user->getFirstName(),
+            'lastName' => $user->getLastName(),
+            'address' => $user->getAddress(),
+            'email' => $user->getEmail(),
+            'products' => $user->getProducts(),
         ]);
     }
 }
