@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Domain\CatalogOfProducers;
 use App\Domain\CatalogOfUsers;
+use App\Domain\Command\AddFollowingCommand;
 use App\Domain\Command\RegisterCommand;
+use App\Domain\Query\ListOfFavoritesQuery;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -45,12 +47,11 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
     public function allProducers(): iterable
     {
         return $this->createQueryBuilder('u')
-            ->select('u.firstName, u.lastName, u.email, u.roles, u.address, u.id')
+            ->select('u.id, u.firstName, u.lastName, u.email, u.roles, u.address, u.username')
             ->andWhere('u.roles LIKE :role')
             ->setParameter('role', '%ROLE_PRODUCER%')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     /**
@@ -61,8 +62,31 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
      */
     public function addUser(RegisterCommand $command)
     {
-        $em =  $this->getEntityManager();
+        $em = $this->getEntityManager();
         $em->persist($command->getUser());
         $em->flush();
+    }
+
+    /**
+     * @param AddFollowingCommand $command
+     * @return mixed|void
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function addFollowing(AddFollowingCommand $command)
+    {
+        $currentUser = $command->getCurrentUser();
+        $producer = $command->getProducer();
+
+        $currentUser->addFollowing($producer);
+        $em = $this->getEntityManager();
+
+        $em->persist($currentUser);
+        $em->flush();
+    }
+
+    public function allFavorites(ListOfFavoritesQuery $query): iterable
+    {
+        return $this->findOneBy(['id' => $query->getUser()->getId()])->getFollowing()->toArray();
     }
 }

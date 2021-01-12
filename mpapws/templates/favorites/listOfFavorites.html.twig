@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des producteurs{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-top: 80px">
+        <div class="row">
+
+            {% for favorite in favorites %}
+                <div class="col-md-4">
+                    <div class="card card-perso" >
+                        <a href="/producteurs/{{ favorite.id }}">
+                            <img src="https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic" class="card-img" alt="ntm">
+                        </a>
+                        <div class="card-body" >
+                            <h5 class="card-title">{{ favorite.firstName }} {{ favorite.lastName }}</h5>
+                            <p class="card-text"><small class="text-muted">{{ favorite.email }}</small></p>
+                            <p class="card-text"><a href="/producteurs/{{ favorite.id }}" class="btn btn-success">En savoir plus</a></p>
+
+                        </div>
+                    </div>
+                </div>
+            {%  endfor %}
+        </div>
+    </div>
+{% endblock %}

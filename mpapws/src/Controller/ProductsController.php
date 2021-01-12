@@ -6,6 +6,8 @@ use App\Domain\Command\AddProductCommand;
 use App\Domain\Command\AddProductHandler;
 use App\Domain\Command\DeleteProductCommand;
 use App\Domain\Command\DeleteProductHandler;
+use App\Domain\Query\ListProducersHandler;
+use App\Domain\Query\ListProducersQuery;
 use App\Domain\Query\ListProductsHandler;
 use App\Domain\Query\ListProductsQuery;
 use App\Domain\Query\OneProducerHandler;
@@ -13,6 +15,7 @@ use App\Domain\Query\OneProducerQuery;
 use App\Domain\Query\OneProductHandler;
 use App\Domain\Query\OneProductQuery;
 use App\Entity\Product;
+use App\Entity\User;
 use App\Form\ProductType;
 use App\Form\SearchType;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -141,5 +144,18 @@ class ProductsController extends AbstractController
         $command = new DeleteProductCommand($product);
         $handler->handle($command);
         return $this->redirectToRoute('index');
+    }
+
+    /**
+     * @Route("/admin/produits/mesproduits", name="mesproduits")
+     * @return Response
+     */
+    public function myProduct(): Response
+    {
+        $currentProducer = $this->getUser();
+
+        return $this->render('products/admin/productsOfProducer.html.twig', [
+            'currentProducer' => $currentProducer,
+        ]);
     }
 }

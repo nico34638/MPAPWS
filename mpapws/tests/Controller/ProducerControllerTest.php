@@ -36,4 +36,10 @@ class ProducerControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
+    public function test_display_producer_detail()
+    {
+        $this->client->request('GET', '/producteurs/producteur');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
 }
