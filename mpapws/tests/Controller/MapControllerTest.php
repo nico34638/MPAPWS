@@ -27,12 +27,22 @@ class MapControllerTest extends WebTestCase
     }
 
     /**
-     * Test for the displaying of the list of producers
+     * Test for the displaying of the page map
      */
-    public function test_display_list_producers()
+    public function test_display_page()
     {
         $this->client->request('GET', '/carte');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * Test div mapid exist
+     */
+    public function test_display_map()
+    {
+        $crawler = $this->client->request('GET', '/carte');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $crawler->matches('div#mapid');
     }
 
 }

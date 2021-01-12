@@ -15,6 +15,13 @@ h3{
     margin-top: 40px;
 }
 
+.title-home-list{
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
 .bg-green {
     background-color: #1b5e20;
 }
