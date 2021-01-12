@@ -158,4 +158,64 @@ class ProductsController extends AbstractController
             'currentProducer' => $currentProducer,
         ]);
     }
+
+    /**
+     * @Route("/admin/produits/mesproduits/{id}", name="ModifProduct")
+     * @param $id
+     * @return Response
+     */
+    public function modificationOfMyProduct(Request $request, OneProductHandler $handler, $id, AddProductHandler $Addhandler, Security $security, SluggerInterface $slugger): Response
+    {
+        $query = new OneProductQuery();
+        $product = $handler->handle($query, $id);
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+
+            $file = $form->get('imageFile')->getData();
+            if ($file)
+            {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+                // Move the file to the directory where brochures are stored
+                try
+                {
+                    $file->move(
+                        $this->getParameter('products_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e)
+                {
+                }
+
+                $path = "uploads/products/" . $newFilename;
+                // Resize image
+                $img = Image::make($path)->resize(250, 250)->save();
+
+
+                $product->setSourceImage($path);
+            } else
+            {
+                $product->setSourceImage('https://via.placeholder.com/150/93A8AC/000000?Text=FarMeetic');
+            }
+
+
+            $product->setProducers($security->getUser());
+            $command = new AddProductCommand($product);
+            $Addhandler->handle($command);
+
+            return $this->redirectToRoute('mesproduits');
+        }
+
+
+        return $this->render('products/admin/ModifProduct.html.twig', [
+            'product' => $product,
+            'form' => $form->createView()
+        ]);
+    }
+
 }
