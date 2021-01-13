@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+<h1>Bienvenue sur Farmeetic!</h1>
+
+<div style="margin-top: 200px;margin-bottom: 200px; width: 70%;margin-left: 15%">
+    You will signed up as the following email:
+    
+    {{ form_start(formEmail) }}
+        {{ form_row(formEmail.email, {'attr': {'placeholder':"email@exemple.com", 'class' : "form-control"}}) }}
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    {{ form_end(formEmail) }}
+    
+</div>
+
+{% endblock %}
