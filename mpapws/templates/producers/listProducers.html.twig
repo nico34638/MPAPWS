@@ -3,56 +3,67 @@
 {% block title %}Liste des producteurs{% endblock %}
 
 {% block body %}
-    <div class="container" style="margin-top: 80px">
-        <div class="row">
-
-            <div class="col-md-12">
-                <h1 class="title-list">Liste des producteurs : </h1>
-            </div>
-
-            {% for producer in producers %}
-                <div class="col-md-4">
-                    <div class="card card-perso">
-
-                        <a href="/producteurs/{{ producer.username }}">
-
-                            <img src="https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic" class="card-img"
-                                 alt="ntm">
-                        </a>
-
-
-
-                        <div class="card-body card-favorites">
-
-
-                            <div>
-                                <h5 class="card-title">{{ producer.firstName }} {{ producer.lastName }}</h5>
-                                <p class="card-text">Je suis un producteur oui</p>
-                                <p class="card-text"><small class="text-muted">{{ producer.email }}</small></p>
-                                <p class="card-text"><a href="/producteurs/{{ producer.username }}" class="btn btn-success">En
-                                        savoir plus</a></p>
-
-                            </div>
-
-                            {% if app.user and producer.id in followings %}
-                                <a class="favorites" href="/favoris/delete/{{ producer.id }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="110">
-                                        <path fill="#FFD700" d="M1,42h107l-87,60 33-102 33,102z"/>
-                                    </svg>
-                                </a>
-                            {% endif %}
-                            {% if app.user and producer.id not in followings %}
-                                <a class="favorites" href="/favoris/add/{{ producer.id }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="110">
-                                        <path fill="#9da19e" d="M1,42h107l-87,60 33-102 33,102z"/>
-                                    </svg>
-                                </a>
-                            {% endif %}
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+	<div class="container" style="margin-top: 80px">
+		<div class="row">
+			
+			<div class="col-md-12">
+				<h1 class="title-list">Liste des producteurs : </h1>
+			</div>
+			
+			{% for producer in producers %}
+				<div class="col-md-4">
+					<div class="card card-perso">
+						
+						<a href="/producteurs/{{ producer.username }}">
+							
+							<img src="https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic" class="card-img"
+							     alt="ntm">
+						</a>
+						
+						
+						<div class="card-body card-favorites">
+							
+							
+							<div style="width: 100%">
+								<h5 class="card-title">{{ producer.firstName }} {{ producer.lastName }}</h5>
+								<p class="card-text">Je suis un producteur oui</p>
+								<p class="card-text"><small class="text-muted">{{ producer.email }}</small></p>
+								<div style="display: flex;justify-content: end;width: 100%">
+									<div style="margin-right: 40%">
+										<p class="card-text"><a href="/producteurs/{{ producer.username }}"
+										                        class="btn btn-success">En
+												savoir plus</a></p>
+									</div>
+									<div style="display: flex;position: relative;
+											width: 50px;padding-top: 10%;vertical-align: middle;
+											overflow: hidden;">
+										{% if app.user and producer.id in followings %}
+											<a class="favorites" href="/favoris/delete/{{ producer.id }}">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"
+												     preserveAspectRatio="xMinYMin meet"
+												     style="display: inline-block;position: absolute;top: 0;left: 0;">
+													<path fill="#FFD700" d="M1,42h107l-87,60 33-102 33,102z"/>
+												</svg>
+											</a>
+										{% endif %}
+										{% if app.user and producer.id not in followings %}
+											<a class="favorites" href="/favoris/add/{{ producer.id }}">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"
+												     preserveAspectRatio="xMinYMin meet"
+												     style="display: inline-block;position: absolute;top: 0;left: 0;">
+													<path fill="#9da19e" d="M1,42h107l-87,60 33-102 33,102z"/>
+												</svg>
+											</a>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						
+						
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
