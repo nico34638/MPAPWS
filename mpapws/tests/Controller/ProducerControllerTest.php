@@ -4,6 +4,10 @@
 namespace App\Tests\Controller;
 
 
+use App\Domain\CatalogOfProducers;
+use App\Domain\Query\ListProducersHandler;
+use App\Domain\Query\ListProducersQuery;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -30,10 +34,21 @@ class ProducerControllerTest extends WebTestCase
     /**
      * Test for the displaying of the list of producers
      */
-    public function test_display_list_producers()
+    public function test_display_page_list_producers()
     {
         $this->client->request('GET', '/producteurs');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function test_display_list_producers()
+    {
+        $userRepository = static::$container->get(UserRepository::class);
+
+        $producers = $userRepository->allProducers();
+
+        $crawler = $this->client->request('GET', '/producteurs');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertCount(count($producers), $crawler->filter('div.card-perso'));
     }
 
     public function test_display_producer_detail()
