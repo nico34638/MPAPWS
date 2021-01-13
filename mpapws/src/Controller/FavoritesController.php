@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use App\Domain\Command\AddFollowingCommand;
 use App\Domain\Command\AddFollowingHandler;
+use App\Domain\Command\DeleteFollowingCommand;
+use App\Domain\Command\DeleteFollowingHandler;
 use App\Domain\Query\ListOfFavoritesHandler;
 use App\Domain\Query\ListOfFavoritesQuery;
 use App\Entity\Product;
@@ -28,6 +30,22 @@ class FavoritesController extends AbstractController
     {
         $currentUser = $this->getUser();
         $command  = new AddFollowingCommand($currentUser, $producer);
+        $handler->handle($command);
+
+        return $this->redirectToRoute('producers');
+    }
+
+
+    /**
+     * @Route("/favoris/delete/{producer}", name="deleteFavorites")
+     * @param User $producer
+     * @param DeleteFollowingHandler $handler
+     * @return Response
+     */
+    public function deleteFavorite(User $producer, DeleteFollowingHandler $handler): Response
+    {
+        $currentUser = $this->getUser();
+        $command  = new DeleteFollowingCommand($currentUser, $producer);
         $handler->handle($command);
 
         return $this->redirectToRoute('producers');

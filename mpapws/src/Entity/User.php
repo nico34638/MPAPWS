@@ -259,7 +259,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeFollowing(self $following): self
+    public function removeFollowing(User $following): self
     {
         $this->following->removeElement($following);
 
