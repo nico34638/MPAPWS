@@ -12,24 +12,47 @@
 
             {% for producer in producers %}
                 <div class="col-md-4">
-                    <div class="card card-perso" >
-                        <a href="/producteurs/{{ producer.username }}">
-                            <img src="https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic" class="card-img" alt="ntm">
-                        </a>
-                        <div class="card-body" >
-                            <h5 class="card-title">{{ producer.firstName }} {{ producer.lastName }}</h5>
-                            <p class="card-text">Je suis un producteur oui</p>
-                            <p class="card-text"><small class="text-muted">{{ producer.email }}</small></p>
-                            <p class="card-text"><a href="/producteurs/{{ producer.username }}" class="btn btn-success">En savoir plus</a></p>
+                    <div class="card card-perso">
 
+                        <a href="/producteurs/{{ producer.username }}">
+
+                            <img src="https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic" class="card-img"
+                                 alt="ntm">
+                        </a>
+
+
+
+                        <div class="card-body card-favorites">
+
+
+                            <div>
+                                <h5 class="card-title">{{ producer.firstName }} {{ producer.lastName }}</h5>
+                                <p class="card-text">Je suis un producteur oui</p>
+                                <p class="card-text"><small class="text-muted">{{ producer.email }}</small></p>
+                                <p class="card-text"><a href="/producteurs/{{ producer.username }}" class="btn btn-success">En
+                                        savoir plus</a></p>
+
+                            </div>
+
+                            {% if app.user and producer.id in followings %}
+                                <a class="favorites" href="/favoris/delete/{{ producer.id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="110">
+                                        <path fill="#FFD700" d="M1,42h107l-87,60 33-102 33,102z"/>
+                                    </svg>
+                                </a>
+                            {% endif %}
                             {% if app.user and producer.id not in followings %}
-                                <a href="/favoris/add/{{ producer.id }}"> <button class="btn btn-success">Ajouter au favoris</button></a>
+                                <a class="favorites" href="/favoris/add/{{ producer.id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="110">
+                                        <path fill="#9da19e" d="M1,42h107l-87,60 33-102 33,102z"/>
+                                    </svg>
+                                </a>
                             {% endif %}
 
                         </div>
                     </div>
                 </div>
-            {%  endfor %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

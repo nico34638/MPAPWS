@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Domain\CatalogOfProducers;
 use App\Domain\CatalogOfUsers;
 use App\Domain\Command\AddFollowingCommand;
+use App\Domain\Command\DeleteFollowingCommand;
 use App\Domain\Command\RegisterCommand;
 use App\Domain\Query\ListOfFavoritesQuery;
 use App\Entity\User;
@@ -88,5 +89,16 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
     public function allFavorites(ListOfFavoritesQuery $query): iterable
     {
         return $this->findOneBy(['id' => $query->getUser()->getId()])->getFollowing()->toArray();
+    }
+
+    public function deleteFollowing(DeleteFollowingCommand $command)
+    {
+        $currentUser = $command->getCurrentUser();
+        $producer = $command->getProducer();
+        $currentUser =  $currentUser->removeFollowing($producer);
+        $em = $this->getEntityManager();
+
+        $em->persist($currentUser);
+        $em->flush();
     }
 }
