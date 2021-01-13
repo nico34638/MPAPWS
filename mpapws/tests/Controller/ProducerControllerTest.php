@@ -40,6 +40,9 @@ class ProducerControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
+    /**
+     * Test list of producers
+     */
     public function test_display_list_producers()
     {
         $userRepository = static::$container->get(UserRepository::class);
@@ -51,6 +54,9 @@ class ProducerControllerTest extends WebTestCase
         $this->assertCount(count($producers), $crawler->filter('div.card-perso'));
     }
 
+    /**
+     * Test display producer detail
+     */
     public function test_display_producer_detail()
     {
         $this->client->request('GET', '/producteurs/producteur');

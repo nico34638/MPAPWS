@@ -31,10 +31,25 @@ class ProductControllerTest extends WebTestCase
     /**
      * Test for the displaying of the list of products
      */
-    public function test_display_list_products()
+    public function test_display_page_list_products()
     {
         $this->client->request('GET', '/produits');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * Test diplay list product and count number products
+     */
+    public function test_display_list_products()
+    {
+        $productRepository = static::$container->get(ProductRepository::class);
+
+        $producers = $productRepository->findAll();
+
+        $crawler = $this->client->request('GET', '/produits');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertCount(count($producers), $crawler->filter('div.card-perso'));
+
     }
 
     /**
