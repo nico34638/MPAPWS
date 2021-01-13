@@ -38,7 +38,7 @@
 											width: 50px;padding-top: 10%;vertical-align: middle;
 											overflow: hidden;">
 										{% if app.user and producer.id in followings %}
-											<a class="favorites" href="/favoris/delete/{{ producer.id }}">
+											<a class="favorites" href="/favoris/supprimer/{{ producer.id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"
 												     preserveAspectRatio="xMinYMin meet"
 												     style="display: inline-block;position: absolute;top: 0;left: 0;">
@@ -47,7 +47,7 @@
 											</a>
 										{% endif %}
 										{% if app.user and producer.id not in followings %}
-											<a class="favorites" href="/favoris/add/{{ producer.id }}">
+											<a class="favorites" href="/favoris/ajouter/{{ producer.id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"
 												     preserveAspectRatio="xMinYMin meet"
 												     style="display: inline-block;position: absolute;top: 0;left: 0;">

@@ -21,7 +21,7 @@ class FavoritesController extends AbstractController
 {
 
     /**
-     * @Route("/favoris/add/{producer}", name="addFavorites")
+     * @Route("/favoris/ajouter/{producer}", name="addFavorites")
      * @param User $producer
      * @param AddFollowingHandler $handler
      * @return Response
@@ -37,7 +37,7 @@ class FavoritesController extends AbstractController
 
 
     /**
-     * @Route("/favoris/delete/{producer}", name="deleteFavorites")
+     * @Route("/favoris/supprimer/{producer}", name="deleteFavorites")
      * @param User $producer
      * @param DeleteFollowingHandler $handler
      * @return Response
@@ -55,7 +55,7 @@ class FavoritesController extends AbstractController
 
 
     /**
-     * @Route("/favoris/addFromDetails/{producer}", name="addFavorites")
+     * @Route("/favoris/addFromDetails/{producer}", name="addFavoritesFromDetail")
      * @param User $producer
      * @param AddFollowingHandler $handler
      * @return Response
@@ -69,7 +69,7 @@ class FavoritesController extends AbstractController
         return $this->redirectToRoute('detailproducers',['username'=>$producer->getUsername()]);
     }
     /**
-     * @Route("/favoris/deleteFromDetails/{producer}", name="deleteFavorites")
+     * @Route("/favoris/deleteFromDetails/{producer}", name="deleteFavoritesFromDetails")
      * @param User $producer
      * @param DeleteFollowingHandler $handler
      * @return Response
