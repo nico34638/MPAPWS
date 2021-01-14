@@ -3,8 +3,6 @@
 
 namespace App\Domain\Query;
 
-
-
 use App\Domain\CatalogOfSubscribers;
 
 class ListSubscribersHandler

@@ -65,6 +65,8 @@ class MailerController extends AbstractController
 
     /**
      * @Route("/sendNewsletter", name="sendNewsletter")
+     * @param ListSubscribersHandler $handler
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws TransportExceptionInterface
      */
     public function sendNewsletter(ListSubscribersHandler $handler)
@@ -72,19 +74,17 @@ class MailerController extends AbstractController
 
         $query = new ListSubscribersQuery();
         $sub = $handler->handle($query);
+        $subs = array();
+        foreach ($sub as &$s){
+            array_push($subs,$s->getEmail());
+        }
 
-            for ($i=0, $size = count($sub); $i < $size; $i++){
-                $email = (new Email())
-                    ->from('newsletter@farmeetic.com')
-                    ->to($sub[$i]->getEmail())
-                    ->subject('newsletter')
-                    ->text('NewsLetter du '.date("d/m/Y"))
-                    ->html('<p><a href="localhost:9999/newsletter/unsubscribe/"'.hash('md5',$sub[$i]).'>Vous desabonné ?</a></p>');
-
-                $this->mailer->send($email);
-            }
-
-            return $this->redirectToRoute('home');
+        $from = 'farmeetic@gmail.com';
+        $to = array('jean@gmail.com','martin@gmail.com');
+        $subject = 'Newsletter 20/1/2021';
+        $content = 'Hello, today we have new content for you ! [...]';
+        $this->sendEmail($from,$subs,$subject,$content);
+        return $this->redirectToRoute('home');
 
     }
 
