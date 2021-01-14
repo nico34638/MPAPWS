@@ -6,7 +6,11 @@ namespace App\Tests\Form;
 
 use App\Entity\User;
 use App\Form\RegisterType;
+use Symfony\Component\Form\Extension\Core\CoreExtension;
+use Symfony\Component\Form\Extension\Validator\Type\FormTypeValidatorExtension;
+use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Validator\ConstraintViolationList;
 
 /**
  * Class RegisterTypeTest
@@ -14,6 +18,24 @@ use Symfony\Component\Form\Test\TypeTestCase;
  */
 class RegisterTypeTest extends TypeTestCase
 {
+
+    /**
+     * Setup fonction fix validator problem
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $validator = $this->createMock('\Symfony\Component\Validator\Validator\ValidatorInterface');
+        $validator->method('validate')->will($this->returnValue(new ConstraintViolationList()));
+        $formTypeExtension = new FormTypeValidatorExtension($validator);
+        $coreExtension = new CoreExtension();
+
+        $this->factory = Forms::createFormFactoryBuilder()
+            ->addExtensions($this->getExtensions())
+            ->addExtension($coreExtension)
+            ->addTypeExtension($formTypeExtension)
+            ->getFormFactory();
+    }
 
     /**
      * Test form register

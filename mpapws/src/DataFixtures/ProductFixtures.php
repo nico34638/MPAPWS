@@ -35,6 +35,7 @@ class ProductFixtures extends Fixture
         $producteur->setPassword($this->encoder->encodePassword($producteur, 'demo'));
         $producteur->setAddress("Rue de la Rochelle 17140 L'Houmeau");
         $producteur->setRoles(['ROLE_PRODUCER']);
+        $producteur->setProfilImage('https://bootdey.com/img/Content/avatar/avatar7.png');
 
         $karimBoulgour = new User();
         $karimBoulgour->setFirstName("Karim");
@@ -44,6 +45,7 @@ class ProductFixtures extends Fixture
         $karimBoulgour->setPassword($this->encoder->encodePassword($karimBoulgour, 'demo'));
         $karimBoulgour->setAddress("Rue de la République 17137 L'Houmeau");
         $karimBoulgour->setRoles(['ROLE_PRODUCER']);
+        $karimBoulgour->setProfilImage('https://bootdey.com/img/Content/avatar/avatar7.png');
 
         for ($i = 0; $i < 20; $i++)
         {

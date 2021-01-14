@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Domain\Command\RegisterCommand;
 use App\Domain\Command\RegisterHandler;
 use App\Form\RegisterType;
+use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,14 +54,14 @@ class RegistrationController extends AbstractController
                 try
                 {
                     $file->move(
-                        $this->getParameter('products_directory'),
+                        $this->getParameter('users_directory'),
                         $newFilename
                     );
                 } catch (FileException $e)
                 {
                 }
 
-                $path = "uploads/profils/" . $newFilename;
+                $path = $path = "uploads/users/" . $newFilename;
                 // Resize image
                 $img = Image::make($path)->resize(250, 250)->save();
 

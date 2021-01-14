@@ -24,7 +24,7 @@
                 <div class="col-lg-10">
                     <div class="myaccount-form">
                         <h3>Création du compte </h3>
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             {{ form_start(form) }}
                             {{ form_errors(form) }}
 
@@ -76,11 +76,7 @@
                                     </div>
                                 </li>
 
-                            <li class="col-md-12">
 
-                                {{ form_row(form.imageFile) }}
-
-                            </li>
                                 <li class="col-md-8">
                                     <div class="col-md-10">
                                         {{ form_label(form.city) }}
@@ -99,6 +95,13 @@
                                         {{ form_widget(form.street, {'attr': {'class': 'form-control', 'placeholder': "Votre rue"}}) }}
                                     </div>
                                 </li>
+
+                                <li class="col-md-12">
+
+                                    {{ form_row(form.imageFile) }}
+
+                                </li>
+
                                 <li class="col-md-12">
                                     <div class="input-group form-check">
                                         <div class="col-md-12">
