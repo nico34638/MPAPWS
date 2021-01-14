@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Domain\CatalogOfMessages;
+use App\Domain\Command\ContactFormCommand;
 use App\Entity\Message;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -12,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Message[]    findAll()
  * @method Message[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MessageRepository extends ServiceEntityRepository
+class MessageRepository extends ServiceEntityRepository implements CatalogOfMessages
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -47,4 +49,24 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
     */
+    /**
+     * @return iterable
+     */
+    public function allMessages(): iterable
+    {
+        return $this->findAll();
+    }
+
+    /**
+     * @param ContactFormCommand $command
+     * @return mixed|void
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function addMessage(ContactFormCommand $command)
+    {
+        $em =  $this->getEntityManager();
+        $em->persist($command->getMessage());
+        $em->flush();
+    }
 }

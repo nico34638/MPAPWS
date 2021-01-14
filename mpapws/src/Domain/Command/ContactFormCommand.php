@@ -20,4 +20,20 @@ class ContactFormCommand{
         $this->message = $message;
     }
 
+    /**
+     * @return Message
+     */
+    public function getMessage(): Message
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param Message $message
+     */
+    public function setMessage(Message $message): void
+    {
+        $this->message = $message;
+    }
+
 }

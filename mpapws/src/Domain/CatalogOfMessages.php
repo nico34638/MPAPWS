@@ -4,6 +4,7 @@
 namespace App\Domain;
 
 use App\Domain\Command\ContactFormCommand;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * Interface CatalogOfMessages
@@ -12,8 +13,16 @@ use App\Domain\Command\ContactFormCommand;
 interface CatalogOfMessages
 {
     /**
+     * @return iterable
+     */
+    public function allMessages(): iterable;
+
+
+    public function __construct(ManagerRegistry $registry);
+
+    /**
      * @param ContactFormCommand $command
      * @return mixed
      */
-    public function addUser(ContactFormCommand $command);
+    public function addMessage(ContactFormCommand $command);
 }
