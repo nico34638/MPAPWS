@@ -5,10 +5,13 @@ namespace App\Controller;
 use App\Domain\Command\RegisterCommand;
 use App\Domain\Command\RegisterHandler;
 use App\Form\RegisterType;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -21,10 +24,16 @@ class RegistrationController extends AbstractController
 
     /**
      * @Route("/register", name="registration")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param RegisterHandler $handler
+     * @param MailerInterface $mailer
+     * @return Response
      */
     public function register(Request $request,
                              UserPasswordEncoderInterface $passwordEncoder,
-                             RegisterHandler $handler): Response
+                             RegisterHandler $handler,
+                             MailerInterface $mailer): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -55,6 +64,21 @@ class RegistrationController extends AbstractController
                 $handler->handle($command);
 
                 $this->addFlash('success', 'Votre compte à bien été enregistré.');
+
+
+                // Create an email
+                $email = (new TemplatedEmail())
+                    ->from($this->getParameter('farmeetic_mail'))
+                    ->to($user->getEmail())
+                    ->subject('Bienvenue chez farmeetic')
+                    ->htmlTemplate('mail/register.html.twig')
+                    ->context([
+                        'firstName' => $user->getFirstName()
+                    ]);
+
+                // Send mail
+                $mailer->send($email);
+
                 return $this->redirectToRoute('app_login');
             }
 
