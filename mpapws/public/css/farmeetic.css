@@ -3,11 +3,32 @@ header img {
     height: 50px;
     width: auto;
     margin-right: 10px;
-    background-color: #33691e;
+}
+
+h3{
+    margin-top: 25px;
+}
+
+.title-list{
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 40px;
+}
+
+.title-home-list{
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bolder;
+    margin-bottom: 10px;
 }
 
 .bg-green {
     background-color: #1b5e20;
+}
+
+.btn-success {
+    background-color: #33691e;
+    border: #1b5e20;
 }
 
 .btn-primary {
@@ -48,12 +69,12 @@ header img {
     }
 }
 
-.card-perso{
+.card-perso {
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
     .laBarre {
         display: none;
     }
@@ -69,12 +90,26 @@ header img {
     margin-top: 50px;
 }
 
+.card-favorites {
+    display: flex;
+}
+
+.favorites {
+    padding: 10px;
+}
+
+
+#star {
+    color: yellow;
+}
+
+
 .card {
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.plus-de-produits{
+.plus-de-produits {
     margin-top: 30px;
 }
 
@@ -83,30 +118,30 @@ header img {
     justify-content: center;
 }
 
-footer{
-    background-color: #1b5e20!important;
+footer {
+    background-color: #1b5e20 !important;
     padding-top: 10px;
     padding-bottom: 15px
 }
 
-footer div p{
-    color : #FFFFFF!important;
+footer div p {
+    color: #FFFFFF !important;
 }
 
-#hr1{
+#hr1 {
     width: 15em
 }
 
-#hr2{
+#hr2 {
     width: 10em
 }
 
-#hr3{
+#hr3 {
     width: 7em
 }
 
 footer p {
-    color : white
+    color: white
 }
 
 footer h6 {
@@ -114,7 +149,7 @@ footer h6 {
     font-size: 25px
 }
 
-footer a{
+footer a {
     color: white;
     text-decoration: none
 }
@@ -180,7 +215,7 @@ button.register {
     cursor: pointer;
 }
 
-button{
+button {
     background: #1b5e20;
     color: #fff;
 }
@@ -191,6 +226,6 @@ ul.row {
     list-style: none;
 }
 
-.addProduct{
+.addProduct {
     margin: 120px 0;
 }

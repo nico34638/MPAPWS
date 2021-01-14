@@ -4,17 +4,42 @@
 
 {% block body %}
 
-
     <div class="container" style="margin-top: 80px">
         <div class="row">
+
+            <div class="col-md-12">
+                <h3 class="title-list">Recherche </h3>
+            </div>
+
+            <div class="col-md-12">
+                <form method="post" class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+
+                    {{ form_widget(form.content, {'attr': {'class': 'form-control form-control-sm ml-3 w-75', 'placeholder': 'Votre recherche'}}) }}
+                    <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+                    {{ form_end(form) }}
+                </form>
+            </div>
+
+            <div class="col-md-12">
+                <h3>Liste des produits : </h3>
+            </div>
 
             {% for p in products %}
                 <div class="col-md-4">
                     <div class="card card-perso">
-                        <img src="{{ p.sourceImage  }}" class="card-img-top" alt="...">
+                        <a href="/produits/{{ p.id }}">
+                            <img src="{{ p.sourceImage }}" class="card-img-top" alt="...">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">{{ p.name }}</h5>
                             <p class="card-text">{{ p.description | slice(0, 100) }}</p>
+                            <p class="card-text">
+                                <a href="/produits/{{ p.id }}" class="btn btn-success">
+                                    En savoir plus
+                                </a>
+                            </p>
                         </div>
 
                     </div>
