@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CONACTEZ NOUS{% endblock %}
+
+{% block body %}
+    <div class="container" style="padding-top: 135px; padding-bottom: 50px">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well well-sm">
+                    <form class="form-horizontal" action="" method="post">
+                        <fieldset>
+                            <legend class="text" style="padding-left: 128px">Nous contacter</legend>
+
+                            <form methode="post">
+                                {{ form_start(form) }}
+                                {{ form_errors(form) }}
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        {{ form_label(form.email) }}
+                                        {{ form_widget(form.email, {'attr' : { 'class' : 'form-control','placeholder' : 'email@exemple.com'}}) }}
+                                    </div>
+                                </div>
+
+                                <!-- Email input-->
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        {{ form_label(form.object) }}
+                                        {{ form_widget(form.object, {'attr' : { 'class' : 'form-control','placeholder' : 'Objet'}}) }}
+                                    </div>
+                                </div>
+
+                                <!-- Message body -->
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        {{ form_label(form.text) }}
+                                        {{ form_widget(form.text, {'attr' : { 'class' : 'form-control','placeholder' : 'Veuillez rentrer votre texte ici...'}}) }}
+                                    </div>
+                                </div>
+
+                                <!-- Form actions -->
+                                <div class="form-group">
+                                    <div class="col-md-12" style="padding-left: 158px">
+                                        <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                            </form>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
