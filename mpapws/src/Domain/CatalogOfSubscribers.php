@@ -3,23 +3,18 @@
 
 namespace App\Domain;
 
-use App\Domain\Command\AddSubscriberCommand;
-use App\Entity\Subscriber;
 
-/**
- * Interface CatalogOfSubscribers
- * @package App\Domain
- */
+use App\Domain\Command\AddSubscriberCommand;
+use App\Domain\Command\DeleteSubscriberCommand;
+
 interface CatalogOfSubscribers
 {
-    /**
-     * @return iterable
-     */
-    public function allSubscribers(): iterable;
 
-    /**
-     * @return mixed
-     */
     public function addSubscriber(AddSubscriberCommand $command);
 
+    public function allSubscribers(): iterable;
+
+    public function deleteSubscriber(DeleteSubscriberCommand $command);
+
+    public function findByCode($code);
 }
