@@ -48,7 +48,7 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
     public function allProducers(): iterable
     {
         return $this->createQueryBuilder('u')
-            ->select('u.id, u.firstName, u.lastName, u.email, u.roles, u.address, u.username')
+            ->select('u.id, u.firstName, u.lastName, u.email, u.roles, u.address, u.username, u.profilImage')
             ->andWhere('u.roles LIKE :role')
             ->setParameter('role', '%ROLE_PRODUCER%')
             ->getQuery()

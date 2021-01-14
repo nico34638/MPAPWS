@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre profil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/profil.css"/>
+{% endblock %}
+
+{% block body %}
+    <hr style="padding: 50px">
+    <section class="wf100 p80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="myaccount-form">
+                        <h3>Modifier votre profil </h3>
+                        <form method="post" enctype="multipart/form-data">
+                            {{ form_start(form) }}
+                            {{ form_errors(form) }}
+
+                            <ul class="row">
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.firstName) }}
+                                            {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': user.firstName }}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.lastName) }}
+                                            {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': user.lastName}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.email) }}
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': user.email}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.username) }}
+                                            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': user.username}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="col-md-10">
+                                            {{ form_label(form.password.first) }}
+                                            {{ form_widget(form.password.first, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-md-6">
+                                    <div class="col-md-10">
+                                        {{ form_label(form.password.second) }}
+                                        {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'placeholder': "Votre mot de passe"}}) }}
+                                    </div>
+                                </li>
+
+                                <li class="col-md-8">
+                                    <div class="col-md-10">
+                                        {{ form_label(form.address) }}
+                                        {{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': user.address}}) }}
+                                    </div>
+                                </li>
+                                <li class="col-md-12">
+                                    {{ form_row(form.imageFile) }}
+                                </li>
+                                <li class="col-md-12" style="padding-bottom: 30px; padding-top: 15px">
+                                    <button class="register">Sauvegarder vos modifications</button>
+                                </li>
+                                {{ form_end(form) }}
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

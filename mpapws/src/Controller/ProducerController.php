@@ -16,12 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProducerController extends AbstractController
 {
+
     /**
      * @Route("/producteurs", name="producers")
      * @param ListProducersHandler $handler
+     * @param ListOfFavoritesHandler $favoritesHandler
      * @return Response
      */
-    public function index(ListProducersHandler $handler, UserRepository $repository, ListOfFavoritesHandler $favoritesHandler): Response
+    public function index(ListProducersHandler $handler, ListOfFavoritesHandler $favoritesHandler): Response
     {
         $query = new ListProducersQuery();
         $producers = $handler->handle($query);
@@ -48,9 +50,12 @@ class ProducerController extends AbstractController
     /**
      * @Route("/producteurs/{username}", name="detailproducers")
      * @param detailProducerHandler $handler
+     * @param UserRepository $repository
+     * @param ListOfFavoritesHandler $favoritesHandler
+     * @param $username
      * @return Response
      */
-    public function detailsProducers(detailProducerHandler $handler, UserRepository $repository, ListOfFavoritesHandler $favoritesHandler, $username): Response
+    public function detailsProducers(detailProducerHandler $handler, ListOfFavoritesHandler $favoritesHandler, $username): Response
     {
         $query = new detailProducerQuery();
         $producer = $handler->handle($query, $username);
