@@ -81,7 +81,7 @@ class MailerController extends AbstractController
 
         $from = 'farmeetic@gmail.com';
         $to = array('jean@gmail.com','martin@gmail.com');
-        $subject = 'Newsletter 20/1/2021';
+        $subject = 'Newsletter '.date('H:m d/m:Y');
         $content = 'Hello, today we have new content for you ! [...]';
         $this->sendEmail($from,$subs,$subject,$content);
         return $this->redirectToRoute('home');
