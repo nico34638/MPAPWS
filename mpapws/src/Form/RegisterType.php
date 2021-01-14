@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class RegisterType
@@ -34,6 +36,14 @@ class RegisterType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe']
+            ])
+            ->add('imageFile', FileType::class, [
+                'label' => 'Image du produit',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => new Image([
+                    'maxSize' => '5M'
+                ])
             ])
             ->add('city', TextType::class, [
                 'mapped' => false,

@@ -41,6 +41,7 @@ class ProducerFixtures extends Fixture
                 $user->setRoles(['ROLE_PRODUCER']);
             }
             $user->setAddress($faker->address . 'France');
+            $user->setProfilImage('https://bootdey.com/img/Content/avatar/avatar7.png');
             $manager->persist($user);
         }
 
@@ -52,6 +53,7 @@ class ProducerFixtures extends Fixture
         $user->setPassword($this->encoder->encodePassword($user, 'producteur'));
         $user->setRoles(['ROLE_PRODUCER']);
         $user->setAddress('25 rue emile normandin 17000 La rochelle');
+        $user->setProfilImage('https://bootdey.com/img/Content/avatar/avatar7.png');
         $manager->persist($user);
 
 

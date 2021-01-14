@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     products_directory: '%kernel.project_dir%/public/uploads/products'
+    users_directory: '%kernel.project_dir%/public/uploads/users'
     farmeetic_mail: 'farmeetic.contact@farmeetic.com'
 services:
     # default configuration for services in *this* file
