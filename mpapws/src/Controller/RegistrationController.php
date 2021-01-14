@@ -14,6 +14,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * Class RegistrationController
@@ -32,7 +33,7 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request,
                              UserPasswordEncoderInterface $passwordEncoder,
-                             RegisterHandler $handler): Response
+                             RegisterHandler $handler, SluggerInterface $slugger): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -40,6 +41,35 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $file = $form->get('imageFile')->getData();
+            if ($file)
+            {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+                // Move the file to the directory where brochures are stored
+                try
+                {
+                    $file->move(
+                        $this->getParameter('products_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e)
+                {
+                }
+
+                $path = "uploads/profils/" . $newFilename;
+                // Resize image
+                $img = Image::make($path)->resize(250, 250)->save();
+
+
+                $user->setProfilImage($path);
+            } else
+            {
+                $user->setProfilImage('https://bootdey.com/img/Content/avatar/avatar7.png');
+            }
+
             if ($form->get('droitUtilisation')->getData() == "true")
             {
                 if ($form->get('producer')->getData() == "true")

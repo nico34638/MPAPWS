@@ -72,6 +72,11 @@ class User implements UserInterface
      */
     private $followers;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $profilImage;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -289,6 +294,18 @@ class User implements UserInterface
         if ($this->followers->removeElement($follower)) {
             $follower->removeFollowing($this);
         }
+
+        return $this;
+    }
+
+    public function getProfilImage(): ?string
+    {
+        return $this->profilImage;
+    }
+
+    public function setProfilImage(string $profilImage): self
+    {
+        $this->profilImage = $profilImage;
 
         return $this;
     }
