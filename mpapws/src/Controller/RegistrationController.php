@@ -32,8 +32,7 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request,
                              UserPasswordEncoderInterface $passwordEncoder,
-                             RegisterHandler $handler,
-                             MailerInterface $mailer): Response
+                             RegisterHandler $handler): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -65,19 +64,6 @@ class RegistrationController extends AbstractController
 
                 $this->addFlash('success', 'Votre compte à bien été enregistré.');
 
-
-                // Create an email
-                $email = (new TemplatedEmail())
-                    ->from($this->getParameter('farmeetic_mail'))
-                    ->to($user->getEmail())
-                    ->subject('Bienvenue chez farmeetic')
-                    ->htmlTemplate('mail/register.html.twig')
-                    ->context([
-                        'firstName' => $user->getFirstName()
-                    ]);
-
-                // Send mail
-                $mailer->send($email);
 
                 return $this->redirectToRoute('app_login');
             }
