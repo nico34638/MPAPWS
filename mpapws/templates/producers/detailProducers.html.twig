@@ -1,107 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ producer.username }}{% endblock %}
+{% block title %}Détails produit{% endblock %}
 
 {% block body %}
-	<div class="container" style="margin-top: 80px">
-		
-		<hr>
-		<br>
-		
-		<div style="display: flex;justify-content: end;width: 100%">
-			<div style="margin-right: 90%">
-				<input class="btn btn-success" type="button" value="<" onclick="history.back()"/>
-			</div>
-			<div style="display: flex;position: relative;
-											width: 50px;padding-top: 10%;vertical-align: middle;
-											overflow: hidden;">
-				{% if app.user and producer.id in followings %}
-					<a class="favorites" href="/favoris/deleteFromDetails/{{ producer.id }}">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"
-						     preserveAspectRatio="xMinYMin meet"
-						     style="display: inline-block;position: absolute;top: 0;left: 0;">
-							<path fill="#FFD700" d="M1,42h107l-87,60 33-102 33,102z"/>
-						</svg>
-					</a>
-				{% endif %}
-				{% if app.user and producer.id not in followings %}
-					<a class="favorites" href="/favoris/addFromDetails/{{ producer.id }}">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"
-						     preserveAspectRatio="xMinYMin meet"
-						     style="display: inline-block;position: absolute;top: 0;left: 0;">
-							<path fill="#9da19e" d="M1,42h107l-87,60 33-102 33,102z"/>
-						</svg>
-					</a>
-				{% endif %}
-			</div>
-		</div>
-		
-		<div class="page-content page-container" id="page-content">
-			<div class="padding">
-				<div class="row container d-flex justify-content-center">
-					<div class="col-xl-6 col-md-12">
-						<div class="card user-card-full">
-							<div class="row m-l-0 m-r-0">
-								<div class="col-sm-4 bg-c-lite-green user-profile">
-									<div class="card-block text-center">
-										<h6 class="f-w-600">{{ producer.firstName }} {{ producer.lastName }}</h6>
-                                        <img src={{ producer.profilImage }} class="rounded-circle" width="150">
-									</div>
-								</div>
-								<div class="col-sm-8">
-									<div class="card-block">
-										<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Informations</h6>
-										<div class="row">
-											<div class="col-sm-6">
-												<p class="m-b-10 f-w-600">Email</p>
-												<h6 class="text-muted f-w-400">{{ producer.email }}</h6>
-											</div>
-											<div class="col-sm-6">
-												<p class="m-b-10 f-w-600">Username</p>
-												<h6 class="text-muted f-w-400">{{ producer.username }}</h6>
-											</div>
-										</div>
-										<h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Adresse</h6>
-										<div class="row">
-											<div class="col-sm-6">
-												<h6 class="text-muted f-w-400">{{ producer.address }}</h6>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="row">
-			
-			{% for p in producer.products %}
-				<div class="col-md-4">
-					<div class="card card-perso"><a href="/produits/{{ p.id }}">
-							<img src="{{ p.sourceImage }}" class="card-img-top" alt="...">
-						</a>
-						<div class="card-body">
-							<h5 class="card-title">{{ p.name }}</h5>
-							<p class="card-text">{{ p.description | slice(0, 100) }}</p>
-							<p class="card-text">
-								<a href="/produits/{{ p.id }}" class="btn btn-success">
-									En savoir plus
-								</a>
-							</p>
-						</div>
-					
-					</div>
-				</div>
-			{% endfor %}
-		
-		</div>
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+    <div class="container" style="margin-top: 80px">
+
+        <hr>
+        <br>
+        <input class="btn btn-success" type="button" value="<" onclick="history.back()"/>
+
+        <div class="flex-wrap" style="display: flex; justify-content: space-around; align-items: center;">
+            <div style="width: 18rem;">
+                <div style="margin: auto;text-align: center">
+                    <img src="{{ asset(producer.profilImage) }}" class="img-thumbnail" style="width: 400px;">
+                </div>
+            </div>
+
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <br>
+                    <h1 class="card-title">{{ producer.lastName }}{{ producer.firstName }}</h1>
+                    <p class="card-body">{{ producer.username }}</p>
+                    <a href="mailto:{{ producer.email }}">
+                        <button class="btn btn-success">Envoyer un mail</button>
+                    </a>
+                    <br>
+                    <p style="margin-top: 5%">
+                        {{ producer.address }}
+                        <br>
+                        <a style="margin-top: 1%" href="/carte">Voir sur la carte</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+    </div>
+
 {% endblock %}
