@@ -10,7 +10,7 @@
 		
 		<div style="display: flex;justify-content: end;width: 100%">
 			<div style="margin-right: 90%">
-		<input class="btn btn-success" type="button" value="<" onclick="history.back()" />
+				<input class="btn btn-success" type="button" value="<" onclick="history.back()"/>
 			</div>
 			<div style="display: flex;position: relative;
 											width: 50px;padding-top: 10%;vertical-align: middle;
@@ -79,11 +79,17 @@
 			
 			{% for p in producer.products %}
 				<div class="col-md-4">
-					<div class="card card-perso">
-						<img src="{{ p.sourceImage }}" class="card-img-top" alt="...">
+					<div class="card card-perso"><a href="/produits/{{ p.id }}">
+							<img src="{{ p.sourceImage }}" class="card-img-top" alt="...">
+						</a>
 						<div class="card-body">
 							<h5 class="card-title">{{ p.name }}</h5>
 							<p class="card-text">{{ p.description | slice(0, 100) }}</p>
+							<p class="card-text">
+								<a href="/produits/{{ p.id }}" class="btn btn-success">
+									En savoir plus
+								</a>
+							</p>
 						</div>
 					
 					</div>
