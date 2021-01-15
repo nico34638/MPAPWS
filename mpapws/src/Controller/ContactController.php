@@ -24,9 +24,10 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash('success', 'Votre message à bien été envoyé.');
+            $command = new ContactFormCommand($message);
+            $handler->handle($command);
         }
-        $command = new ContactFormCommand($message);
-        $handler->handle($command);
+
 
         return $this->render('contact/index.html.twig', [
             'message' => $message,
