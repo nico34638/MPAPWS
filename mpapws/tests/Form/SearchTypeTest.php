@@ -7,12 +7,13 @@ namespace App\Tests\Form;
 use App\Entity\User;
 use App\Form\RegisterType;
 use App\Form\SearchType;
+use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
  * Class SearchTypeTest
  * @package App\Tests\Form
  */
-class SearchTypeTest
+class SearchTypeTest extends TypeTestCase
 {
     /**
      * Test form search
