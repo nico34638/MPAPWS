@@ -69,6 +69,7 @@ Le service correspondant est mail
 
     * url du registry : http://registry.univ-lr.fr:81
     
-
-
+# Mise en place de l'environement Architecture
+ pensez à compléter votre README avec la procédure pour être opérationnel en tant que nouveau développeur (il y a 5 étapes, ça dure 2 minutes pas plus...), ça va vous permettre de valider que ça fonctionne
+(les 5 étapes : clone - démarrer les containers - .env.local (et .env.test) - composer install - migrations - fixtures)
 
