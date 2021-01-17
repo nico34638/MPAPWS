@@ -19,7 +19,7 @@ use Symfony\Component\Validator\ConstraintViolationList;
 class ModifProfilTypeTest extends TypeTestCase
 {
     /**
-     * Setup fonction fix validator problem
+     * Setup function fix validator problem
      */
     public function setUp(): void
     {
@@ -75,5 +75,4 @@ class ModifProfilTypeTest extends TypeTestCase
             }
         }
     }
-
 }

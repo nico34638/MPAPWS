@@ -25,6 +25,9 @@ class ContactFormHandler
         $this->catalogOfMessages = $catalogOfMessages;
     }
 
+    /**
+     * @param ContactFormCommand $command
+     */
     public function handle(ContactFormCommand $command)
     {
         $this->catalogOfMessages->addMessage($command);

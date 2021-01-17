@@ -15,7 +15,7 @@ use Symfony\Component\Validator\ConstraintViolationList;
 class ContactTypeTest extends TypeTestCase
 {
     /**
-     * Setup fonction fix validator problem
+     * Setup function fix validator problem
      */
     public function setUp(): void
     {
@@ -33,9 +33,9 @@ class ContactTypeTest extends TypeTestCase
     }
 
     /**
-     * Test form register
+     * Test form contact
      */
-    public function test_register_type()
+    public function test_contact_type()
     {
         $formData = [
             'email' => 'test',
@@ -56,5 +56,4 @@ class ContactTypeTest extends TypeTestCase
         $this->assertEquals($expected, $contentForm);
 
     }
-
 }
