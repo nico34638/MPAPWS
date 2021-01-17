@@ -98,7 +98,7 @@ docker exec -it <container_id> /bin/bash
 4. Après pour mettre à jour les dépendances entre applications et librairies il faut lancer les 2 commandes :
 ```console
 cd mpapws
-composer update
+composer install
 ```
 
 5. Ensuite il faut mettre à jour sa base de données et la remplir grâce aux fixtures :
