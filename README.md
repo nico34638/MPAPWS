@@ -69,7 +69,46 @@ Le service correspondant est mail
 
     * url du registry : http://registry.univ-lr.fr:81
     
-# Mise en place de l'environement Architecture
+# Mise en place de l'environement
  pensez à compléter votre README avec la procédure pour être opérationnel en tant que nouveau développeur (il y a 5 étapes, ça dure 2 minutes pas plus...), ça va vous permettre de valider que ça fonctionne
 (les 5 étapes : clone - démarrer les containers - .env.local (et .env.test) - composer install - migrations - fixtures)
+
+1. Clonez le repo dans un dossier avec la commande suivante :
+```bash=
+git clone https://forge.iut-larochelle.fr/nfidel/2020-2021-info2-mpapws-project-z31.git
+```
+
+2. Lancez les containers docker (oubliez pas de démarer ce dernier) :
+```bash=
+docker-compose up --build
+```
+Ou (pour lancer en arrière-plan):
+```bash=
+docker-compose up -d --build
+```
+3. Ensuite pour rentrez dans le shell interactif docker :
+```bash=
+docker-compose exec app bash
+```
+Ou
+```bash=
+docker exec -it <container_id> /bin/bash
+```
+
+4. Après pour mettre à jour les dépendances entre applications et librairies il faut lancer les 2 commandes :
+```console
+cd mpapws
+composer update
+```
+
+5. Ensuite il faut mettre à jour sa base de données et la remplir grâce aux fixtures :
+
+```sh
+rm /migrations/*
+php bin/console make:migration
+php bin/console doctrine:migrations:mirgrate
+php bin/console doctrine:fixtures:load
+```
+
+### **Votre environement de travail est maintenant en place, plus qu'à !**
 
