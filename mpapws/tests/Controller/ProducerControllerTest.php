@@ -59,7 +59,12 @@ class ProducerControllerTest extends WebTestCase
      */
     public function test_display_producer_detail()
     {
-        $this->client->request('GET', '/producteurs/producteur');
+        $userRepository = static::$container->get(UserRepository::class);
+
+        $user = $userRepository->findOneByEmail('producteur@gmail.com');
+
+
+        $this->client->request('GET', "/producteurs/".$user->getUsername());
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
