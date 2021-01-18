@@ -46,6 +46,7 @@ class ProductFixtures extends Fixture
         $karimBoulgour->setAddress("Rue de la République 17137 L'Houmeau");
         $karimBoulgour->setRoles(['ROLE_PRODUCER']);
         $karimBoulgour->setProfilImage('https://bootdey.com/img/Content/avatar/avatar7.png');
+        $manager->persist($karimBoulgour);
 
         for ($i = 0; $i < 20; $i++)
         {
@@ -79,7 +80,7 @@ class ProductFixtures extends Fixture
         $boulgour->setSourceImage("https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic");
         $boulgour->setDescription("Rien ne vaut unbon boulgour fait par Karim");
         $boulgour->setPrice(random_int(1, 155));
-        $boulgour->setProducers($producteur);
+        $boulgour->setProducers($karimBoulgour);
         $manager->persist($boulgour);
 
         $manager->flush();

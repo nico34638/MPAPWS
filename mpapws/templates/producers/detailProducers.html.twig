@@ -38,6 +38,24 @@
         <hr>
         <br>
 
+        <div class="row">
+
+            {% for p in producer.products %}
+                <div class="col-md-4">
+                    <div class="card card-perso">
+                        <img src="{{ p.sourceImage  }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p.name }}</h5>
+                            <p class="card-text">{{ p.description | slice(0, 100) }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+        </div>
     </div>
 
 {% endblock %}
