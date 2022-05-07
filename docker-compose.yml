@@ -1,55 +1,27 @@
-version: '3'
+version: '3.7'
 services:
-    app:
-      build:
-        args:
-          APP_DOCUMENT_ROOT: /var/www/html/mpapws/public
-        context: ./build/mpapws
-      image: iutlr-info-apache-symfony5-mpapws
-      container_name: iutlr-info2-projet-mpapws
-      ports:
-        - 9999:80
-      volumes:
-        - ./mpapws:/var/www/html/mpapws:delegated
-      networks:
-        - mpapws-network
-    mysql:
-      build:
-        context: build/mysql
-      image: iutlr-info-mysql-mpapws
-      container_name: iutlr-info2-mysql-mpapws
-      ports:
-        - 3307:3306
-      volumes:
-        - ./mysql:/var/lib/mysql:delegated
-      environment:
-        MYSQL_DATABASE: db-mpapws
-        MYSQL_USER: mpapws
-        MYSQL_PASSWORD: mpapws
-        MYSQL_ROOT_PASSWORD: mpapws
-      networks:
-        - mpapws-network
-    phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      container_name: phpmyadmin
-      environment:
-        PMA_HOST: mysql
-        MYSQL_ROOT_PASSWORD: "mpapws"
-      restart: always
-      ports:
-        - 2000:80
-      volumes:
-        - /sessions
-      networks:
-        - mpapws-network
-    mail:
-      image: mailhog/mailhog
-      ports:
-        - 1080:8025
-      networks:
-        - mpapws-network
+    php8-sf6:
+        container_name: php8-sf6
+        build: build 
+        ports:
+            - "8888:8000"
+        volumes:
+            - .:/var/www/html
 
-networks:
-  mpapws-network:
-    driver: bridge
+    mailer:
+        image: schickling/mailcatcher
+        ports: [1025, 1080]
 
+    database:
+        image: postgres:13-alpine
+        environment:
+            POSTGRES_DB: app
+            POSTGRES_PASSWORD: ChangeMe
+            POSTGRES_USER: symfony
+        volumes:
+            - db-data:/var/lib/postgresql/data:rw
+        ports:
+            - "5432"
+
+volumes:
+  db-data:
