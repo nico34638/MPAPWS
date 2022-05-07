@@ -14,9 +14,6 @@ use App\Entity\Product;
  */
 interface CatalogOfProducts
 {
-    /**
-     * @return iterable
-     */
     public function allProducts(): iterable;
 
     /**
@@ -30,7 +27,6 @@ interface CatalogOfProducts
     public function searchProduct(SearchProductQuery $query);
 
     /**
-     * @param DeleteProductCommand $command
      * @return mixed
      */
     public function deleteProduct(DeleteProductCommand $command);

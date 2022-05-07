@@ -7,11 +7,8 @@ use App\Domain\CatalogOfSubscribers;
 
 class ListSubscribersHandler
 {
-    private $catalog;
-
-    public function __construct(CatalogOfSubscribers $aCatalogOfSubscribers)
+    public function __construct(private CatalogOfSubscribers $catalog)
     {
-        $this->catalog=$aCatalogOfSubscribers;
     }
 
     public function handle(ListSubscribersQuery $query):iterable

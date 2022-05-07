@@ -26,15 +26,12 @@ use Symfony\Component\Security\Core\Security;
 
 class MailerController extends AbstractController
 {
-    private MailerInterface $mailer;
-
     /**
      * MailerController constructor.
      * @param MailerInterface $mailer
      */
-    public function __construct(MailerInterface $mailer)
+    public function __construct(private MailerInterface $mailer)
     {
-        $this->mailer = $mailer;
     }
 
 
@@ -52,7 +49,7 @@ class MailerController extends AbstractController
         //$subject = 'Newsletter 20/1/2021';
         //$content = 'Hello, today we have new content for you ! [...]';
 
-        for ($i=0, $size = count($to); $i < $size; $i++){
+        for ($i=0, $size = is_countable($to) ? count($to) : 0; $i < $size; $i++){
             $h=hash('md5',$to[$i]);
             $email = (new Email())
                 ->from($from)
@@ -65,7 +62,6 @@ class MailerController extends AbstractController
 
     /**
      * @Route("/sendNewsletter", name="sendNewsletter")
-     * @param ListSubscribersHandler $handler
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws TransportExceptionInterface
      */
@@ -90,10 +86,6 @@ class MailerController extends AbstractController
 
     /**
      * @Route("/newsletter", name="newsletter")
-     * @param Request $request
-     * @param Security $security
-     * @param AddSubscriberHandler $handler
-     * @return Response
      * @throws TransportExceptionInterface
      */
     public function subToNewsletter(Request $request,AddSubscriberHandler $handler,Security $security): Response

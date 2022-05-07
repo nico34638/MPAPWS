@@ -42,9 +42,6 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
             ->getFirstResult();
     }
 
-    /**
-     * @return iterable
-     */
     public function allProducers(): iterable
     {
         return $this->createQueryBuilder('u')
@@ -56,7 +53,6 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
     }
 
     /**
-     * @param RegisterCommand $command
      * @return mixed|void
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
@@ -69,7 +65,6 @@ class UserRepository extends ServiceEntityRepository implements CatalogOfProduce
     }
 
     /**
-     * @param AddFollowingCommand $command
      * @return mixed|void
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException

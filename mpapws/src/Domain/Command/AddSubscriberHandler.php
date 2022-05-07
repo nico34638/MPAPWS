@@ -14,22 +14,13 @@ class AddSubscriberHandler
 {
 
     /**
-     * @var CatalogOfSubscribers
-     */
-    private CatalogOfSubscribers $catalogOfSubscribers;
-
-    /**
      * AddSubscriberHandler constructor.
      * @param CatalogOfSubscribers $catalogOfSubscribers
      */
-    public function __construct(CatalogOfSubscribers $catalogOfSubscribers)
+    public function __construct(private CatalogOfSubscribers $catalogOfSubscribers)
     {
-        $this->catalogOfSubscribers = $catalogOfSubscribers;
     }
 
-    /**
-     * @param AddSubscriberCommand $command
-     */
     public function handle(AddSubscriberCommand $command)
     {
         $this->catalogOfSubscribers->addSubscriber($command);

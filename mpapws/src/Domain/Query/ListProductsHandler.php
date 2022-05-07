@@ -7,11 +7,8 @@ use App\Domain\CatalogOfProducts;
 
 class ListProductsHandler
 {
-    private $catalog;
-
-    public function __construct(CatalogOfProducts $aCatalogOfProducts)
+    public function __construct(private CatalogOfProducts $catalog)
     {
-        $this->catalog=$aCatalogOfProducts;
     }
 
     public function handle(ListProductsQuery $query):iterable

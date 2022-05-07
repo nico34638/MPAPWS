@@ -12,22 +12,13 @@ use App\Domain\CatalogOfMessages;
 class ContactFormHandler
 {
     /**
-     * @var CatalogOfMessages
-     */
-    private CatalogOfMessages $catalogOfMessages;
-
-    /**
      * RegisterHandler constructor.
      * @param CatalogOfMessages $catalogOfMessages
      */
-    public function __construct(CatalogOfMessages $catalogOfMessages)
+    public function __construct(private CatalogOfMessages $catalogOfMessages)
     {
-        $this->catalogOfMessages = $catalogOfMessages;
     }
 
-    /**
-     * @param ContactFormCommand $command
-     */
     public function handle(ContactFormCommand $command)
     {
         $this->catalogOfMessages->addMessage($command);

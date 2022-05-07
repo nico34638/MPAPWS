@@ -11,13 +11,9 @@ use App\Domain\Query\ListOfFavoritesQuery;
  */
 interface CatalogOfProducers
 {
-    /**
-     * @return iterable
-     */
     public function allProducers(): iterable;
 
     /**
-     * @param ListOfFavoritesQuery $query
      * @return mixed
      */
     public function allFavorites(ListOfFavoritesQuery $query): iterable;

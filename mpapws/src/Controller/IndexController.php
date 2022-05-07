@@ -20,9 +20,6 @@ class IndexController extends AbstractController
 {
     /**
      * @Route("/", name="home")
-     * @param ListProductsHandler $productHandler
-     * @param ListProducersHandler $producerHandler
-     * @return Response
      */
     public function index(ListProductsHandler $productHandler, ListProducersHandler $producerHandler): Response
     {
@@ -37,7 +34,7 @@ class IndexController extends AbstractController
         $products = array();
 
         for ($i = 1; $i <= 12; $i++){
-            array_push($products,$allProducts[rand(0,$nbProducts-1)]);
+            array_push($products,$allProducts[random_int(0,$nbProducts-1)]);
         }
 
         return $this->render('index/index.html.twig', [

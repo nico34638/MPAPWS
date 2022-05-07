@@ -19,9 +19,6 @@ class ProducerController extends AbstractController
 
     /**
      * @Route("/producteurs", name="producers")
-     * @param ListProducersHandler $handler
-     * @param ListOfFavoritesHandler $favoritesHandler
-     * @return Response
      */
     public function index(ListProducersHandler $handler, ListOfFavoritesHandler $favoritesHandler): Response
     {
@@ -49,11 +46,8 @@ class ProducerController extends AbstractController
 
     /**
      * @Route("/producteurs/{username}", name="detailproducers")
-     * @param detailProducerHandler $handler
      * @param UserRepository $repository
-     * @param ListOfFavoritesHandler $favoritesHandler
      * @param $username
-     * @return Response
      */
     public function detailsProducers(detailProducerHandler $handler, ListOfFavoritesHandler $favoritesHandler, $username): Response
     {

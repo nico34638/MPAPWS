@@ -23,11 +23,6 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/profil/modif-profil", name="modif-profil")
-     * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param RegisterHandler $handler
-     * @param SluggerInterface $slugger
-     * @return Response
      */
     public function modif(Request $request,
                           UserPasswordEncoderInterface $passwordEncoder,
@@ -54,7 +49,7 @@ class ProfilController extends AbstractController
                         $this->getParameter('users_directory'),
                         $newFilename
                     );
-                } catch (FileException $e)
+                } catch (FileException)
                 {
                 }
 
@@ -86,7 +81,6 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/profil", name="profil")
-     * @return Response
      */
     public function index(): Response
     {

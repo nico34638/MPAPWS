@@ -7,11 +7,8 @@ use App\Domain\CatalogOfSubscribers;
 
 class DeleteSubscriberHandler
 {
-    private CatalogOfSubscribers $catalogOfSubscribers;
-
-    public function __construct(CatalogOfSubscribers $catalogOfSubscribers)
+    public function __construct(private CatalogOfSubscribers $catalogOfSubscribers)
     {
-        $this->catalogOfSubscribers = $catalogOfSubscribers;
     }
 
     public function handle(DeleteSubscriberCommand $command)

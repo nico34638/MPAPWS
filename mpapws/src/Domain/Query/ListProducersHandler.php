@@ -9,11 +9,8 @@ use App\Domain\CatalogOfProducers;
 class ListProducersHandler
 {
 
-    private $catalog;
-
-    public function __construct(CatalogOfProducers $aCatalogOfProducer)
+    public function __construct(private CatalogOfProducers $catalog)
     {
-        $this->catalog = $aCatalogOfProducer;
     }
 
     public function handle(ListProducersQuery $query): iterable

@@ -50,7 +50,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -160,7 +160,6 @@ class User implements UserInterface
 
     /**
      * Add a role
-     * @param string $role
      */
     public function addRoles(string $role)
     {
@@ -179,7 +178,6 @@ class User implements UserInterface
     }
 
     /**
-     * @param array $roles
      * @return $this
      */
     public function setRoles(array $roles): self

@@ -19,10 +19,6 @@ use Symfony\Component\Validator\Constraints\Image;
  */
 class ModifyProfilType extends AbstractType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -47,9 +43,6 @@ class ModifyProfilType extends AbstractType
         ;
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

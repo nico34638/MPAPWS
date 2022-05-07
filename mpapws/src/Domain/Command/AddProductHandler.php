@@ -14,22 +14,13 @@ class AddProductHandler
 {
 
     /**
-     * @var CatalogOfProducts
-     */
-    private CatalogOfProducts $catalogOfProducts;
-
-    /**
      * AddProductHandler constructor.
      * @param CatalogOfProducts $catalogOfProducts
      */
-    public function __construct(CatalogOfProducts $catalogOfProducts)
+    public function __construct(private CatalogOfProducts $catalogOfProducts)
     {
-        $this->catalogOfProducts = $catalogOfProducts;
     }
 
-    /**
-     * @param AddProductCommand $command
-     */
     public function handle(AddProductCommand $command)
     {
         $this->catalogOfProducts->addProduct($command);

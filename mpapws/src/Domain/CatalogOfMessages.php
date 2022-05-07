@@ -12,16 +12,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 interface CatalogOfMessages
 {
-    /**
-     * @return iterable
-     */
     public function allMessages(): iterable;
 
 
     public function __construct(ManagerRegistry $registry);
 
     /**
-     * @param ContactFormCommand $command
      * @return mixed
      */
     public function addMessage(ContactFormCommand $command);

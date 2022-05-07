@@ -37,9 +37,6 @@ class SearchController extends AbstractController
     /**
      * @Route("/search/{param}", name="searchParam")
      * @param $param
-     * @param Request $request
-     * @param SearchProductHandler $handler
-     * @return Response
      */
     public function searchWithParam($param, Request $request, SearchProductHandler $handler): Response
     {
@@ -65,10 +62,6 @@ class SearchController extends AbstractController
     }
 
 
-    /**
-     * @param RequestStack $requestStack
-     * @return Response
-     */
     public function searchNavBar(RequestStack $requestStack): Response
     {
         $form = $this->createForm(SearchType::class);

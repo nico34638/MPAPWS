@@ -32,7 +32,6 @@ class MatchAgainst extends FunctionNode
     protected $queryExpansion = false;
 
     /**
-     * @param \Doctrine\ORM\Query\Parser $parser
      * @throws \Doctrine\ORM\Query\QueryException
      */
     public function parse(\Doctrine\ORM\Query\Parser $parser)

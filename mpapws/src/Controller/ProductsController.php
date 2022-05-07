@@ -32,9 +32,6 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/produits", name="products")
-     * @param ListProductsHandler $handler
-     * @param Request $request
-     * @return Response
      */
     public function listProduct(ListProductsHandler $handler, Request $request): Response
     {
@@ -59,9 +56,7 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/produits/{id}", name="productDetails")
-     * @param OneProductHandler $handler
      * @param $id
-     * @return Response
      */
     public function detailsPrd(OneProductHandler $handler, $id): Response
     {
@@ -77,11 +72,6 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/admin/produits/ajouter", name="addProduct")
-     * @param Request $request
-     * @param AddProductHandler $handler
-     * @param Security $security
-     * @param SluggerInterface $slugger
-     * @return Response
      */
     public function addProduct(Request $request, AddProductHandler $handler, Security $security, SluggerInterface $slugger): Response
     {
@@ -106,7 +96,7 @@ class ProductsController extends AbstractController
                         $this->getParameter('products_directory'),
                         $newFilename
                     );
-                } catch (FileException $e)
+                } catch (FileException)
                 {
                 }
 
@@ -136,8 +126,6 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/admin/produits/{id}", name="deleteProduct", methods="DELETE")
-     * @param Product $product
-     * @return Response
      */
     public function deleteProduct(Product $product, DeleteProductHandler $handler): Response
     {
@@ -148,7 +136,6 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/admin/produits/mesproduits", name="mesproduits")
-     * @return Response
      */
     public function myProduct(): Response
     {
@@ -162,7 +149,6 @@ class ProductsController extends AbstractController
     /**
      * @Route("/admin/produits/mesproduits/{id}", name="ModifProduct")
      * @param $id
-     * @return Response
      */
     public function modificationOfMyProduct(Request $request, OneProductHandler $handler, $id, AddProductHandler $Addhandler, Security $security, SluggerInterface $slugger): Response
     {
@@ -188,7 +174,7 @@ class ProductsController extends AbstractController
                         $this->getParameter('products_directory'),
                         $newFilename
                     );
-                } catch (FileException $e)
+                } catch (FileException)
                 {
                 }
 

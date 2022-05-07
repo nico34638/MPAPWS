@@ -8,14 +8,11 @@ use App\Entity\Subscriber;
 
 class DeleteSubscriberCommand
 {
-    private Subscriber $subscriber;
-
     /**
      * DeleteSubscriberCommand constructor.
      */
-    public function __construct(Subscriber $subscriber)
+    public function __construct(private Subscriber $subscriber)
     {
-        $this->subscriber = $subscriber;
     }
 
     public function getSubscriber()

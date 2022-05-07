@@ -27,7 +27,6 @@ class SearchProductHandler
     }
 
     /**
-     * @param SearchProductQuery $query
      * @return mixed
      */
     public function handle(SearchProductQuery $query)

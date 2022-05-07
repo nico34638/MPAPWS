@@ -27,11 +27,7 @@ class RegistrationController extends AbstractController
 
     /**
      * @Route("/register", name="registration")
-     * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param RegisterHandler $handler
      * @param MailerInterface $mailer
-     * @return Response
      */
     public function register(Request $request,
                              UserPasswordEncoderInterface $passwordEncoder,
@@ -57,7 +53,7 @@ class RegistrationController extends AbstractController
                         $this->getParameter('users_directory'),
                         $newFilename
                     );
-                } catch (FileException $e)
+                } catch (FileException)
                 {
                 }
 

@@ -22,9 +22,6 @@ class FavoritesController extends AbstractController
 
     /**
      * @Route("/favoris/ajouter/{producer}", name="addFavorites")
-     * @param User $producer
-     * @param AddFollowingHandler $handler
-     * @return Response
      */
     public function addFavorites(User $producer, AddFollowingHandler $handler): Response
     {
@@ -38,9 +35,6 @@ class FavoritesController extends AbstractController
 
     /**
      * @Route("/favoris/supprimer/{producer}", name="deleteFavorites")
-     * @param User $producer
-     * @param DeleteFollowingHandler $handler
-     * @return Response
      */
     public function deleteFavorite(User $producer, DeleteFollowingHandler $handler): Response
     {
@@ -56,9 +50,6 @@ class FavoritesController extends AbstractController
 
     /**
      * @Route("/favoris/addFromDetails/{producer}", name="addFavoritesFromDetail")
-     * @param User $producer
-     * @param AddFollowingHandler $handler
-     * @return Response
      */
     public function addFavoritesFromDetails(User $producer, AddFollowingHandler $handler): Response
     {
@@ -70,9 +61,6 @@ class FavoritesController extends AbstractController
     }
     /**
      * @Route("/favoris/deleteFromDetails/{producer}", name="deleteFavoritesFromDetails")
-     * @param User $producer
-     * @param DeleteFollowingHandler $handler
-     * @return Response
      */
     public function deleteFavoriteFromDetails(User $producer, DeleteFollowingHandler $handler): Response
     {
@@ -87,9 +75,6 @@ class FavoritesController extends AbstractController
 
     /**
      * @Route("/favoris/deleteFromList/{producer}", name="deleteFavoritesFromList")
-     * @param User $producer
-     * @param DeleteFollowingHandler $handler
-     * @return Response
      */
     public function deleteFavoriteFromList(User $producer, DeleteFollowingHandler $handler): Response
     {
@@ -102,8 +87,6 @@ class FavoritesController extends AbstractController
 
     /**
      * @Route("/favoris", name="listFavorites")
-     * @param ListOfFavoritesHandler $handler
-     * @return Response
      */
     public function listFavorites(ListOfFavoritesHandler $handler, ListOfFavoritesHandler $favoritesHandler):Response
     {

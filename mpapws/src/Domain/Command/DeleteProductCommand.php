@@ -12,30 +12,18 @@ use App\Entity\Product;
 class DeleteProductCommand
 {
     /**
-     * @var Product
-     */
-    private Product $product;
-
-    /**
      * DeleteProductCommand constructor.
      * @param Product $product
      */
-    public function __construct(Product $product)
+    public function __construct(private Product $product)
     {
-        $this->product = $product;
     }
 
-    /**
-     * @return Product
-     */
     public function getProduct(): Product
     {
         return $this->product;
     }
 
-    /**
-     * @param Product $product
-     */
     public function setProduct(Product $product): void
     {
         $this->product = $product;
