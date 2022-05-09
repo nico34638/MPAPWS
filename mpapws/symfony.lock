@@ -99,20 +99,17 @@
     "egulias/email-validator": {
         "version": "2.1.24"
     },
+    "fakerphp/faker": {
+        "version": "v1.19.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.12"
-    },
-    "fzaninotto/faker": {
-        "version": "v1.9.1"
     },
     "guzzlehttp/psr7": {
         "version": "1.7.0"
     },
     "intervention/image": {
         "version": "2.5.1"
-    },
-    "jzonta/faker-restaurant": {
-        "version": "1.1.11"
     },
     "laminas/laminas-code": {
         "version": "3.5.1"
