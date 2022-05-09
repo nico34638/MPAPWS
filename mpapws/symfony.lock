@@ -174,9 +174,6 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "swiftmailer/swiftmailer": {
-        "version": "v6.2.3"
-    },
     "symfony/asset": {
         "version": "v4.3.11"
     },
@@ -347,6 +344,9 @@
     "symfony/options-resolver": {
         "version": "v4.3.11"
     },
+    "symfony/password-hasher": {
+        "version": "v6.0.8"
+    },
     "symfony/phpunit-bridge": {
         "version": "4.3",
         "recipe": {
@@ -381,7 +381,7 @@
         "version": "v1.20.0"
     },
     "symfony/polyfill-php73": {
-        "version": "v1.20.0"
+        "version": "v1.25.0"
     },
     "symfony/polyfill-php80": {
         "version": "v1.20.0"
@@ -431,7 +431,7 @@
         "version": "v4.3.11"
     },
     "symfony/security-guard": {
-        "version": "v4.3.11"
+        "version": "v5.4.3"
     },
     "symfony/security-http": {
         "version": "v4.3.11"
@@ -447,20 +447,6 @@
     },
     "symfony/string": {
         "version": "v5.2.0"
-    },
-    "symfony/swiftmailer-bundle": {
-        "version": "2.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.5",
-            "ref": "ae4d22af30bbd484506bc1817c5a3ef72c855b93"
-        },
-        "files": [
-            "config/packages/dev/swiftmailer.yaml",
-            "config/packages/swiftmailer.yaml",
-            "config/packages/test/swiftmailer.yaml"
-        ]
     },
     "symfony/translation": {
         "version": "3.3",
