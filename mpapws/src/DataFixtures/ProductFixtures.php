@@ -25,7 +25,7 @@ class ProductFixtures extends Fixture
         // $manager->persist($product);
 
         $faker = \Faker\Factory::create('fr_FR');
-        $faker->addProvider(new \FakerRestaurant\Provider\fr_FR\Restaurant($faker));
+        //$faker->addProvider(new \FakerRestaurant\Provider\fr_FR\Restaurant($faker));
 
         $producteur = new User();
         $producteur->setFirstName($faker->firstName);
@@ -53,11 +53,11 @@ class ProductFixtures extends Fixture
             $produit = new Product();
             if ($i % 2 == 0)
             {
-                $produit->setName($faker->vegetableName());
+                $produit->setName("carrote");
                 $produit->setSourceImage("https://via.placeholder.com/250/93A8AC/000000?Text=FarMeetic");
             } else
             {
-                $produit->setName($faker->fruitName());
+                $produit->setName("pomme");
                 $produit->setSourceImage("https://via.placeholder.com/250/424B54/FFFFFF?Text=FarMeetic");
             }
 
