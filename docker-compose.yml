@@ -6,7 +6,7 @@ services:
             - "8888:8000"
         volumes:
             - ./mpapws:/var/www/html
-
+        command: symfony serve 
     mysql:
         image: mysql
         ports:
